@@ -3,6 +3,7 @@ import AboutSumary from "./sections/AboutSummary.jsx";
 import Hero from "./sections/Hero.jsx";
 import ResidencesSummary from "./sections/ResidencesSummary.jsx";
 import TeamSummary from "./sections/TeamSummary.jsx";
+import TestimonialsSection from "./sections/TestimonialsSummary.jsx";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <AboutSumary />
       <TeamSummary />
       <ResidencesSummary />
+      <TestimonialsSection />
 
       
     </div>
