@@ -1,6 +1,7 @@
 import Navbar from "./components/layout/Navbar.jsx";
 import AboutSumary from "./sections/AboutSummary.jsx";
 import Hero from "./sections/Hero.jsx";
+import TeamSummary from "./sections/TeamSummary.jsx";
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <AboutSumary />
+      <TeamSummary />
 
       
     </div>
