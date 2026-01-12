@@ -18,13 +18,14 @@ export default function Footer() {
           <div className="grid gap-10 md:grid-cols-3">
             {/* Brand + texto */}
             <div className="md:col-span-2">
-              <div className="inline-flex items-center gap-4">
+              <div className="inline-flex items-center gap-6">
                 <img
                   src={logo}
                   alt="Residencia Alma Dulce"
-                  className="h-20 sm:h-24 w-auto object-contain drop-shadow-[0_10px_18px_rgba(15,23,42,0.10)]"
+                  className="h-[200px] w-auto object-contain drop-shadow-[0_10px_18px_rgba(15,23,42,0.10)]"
                   loading="lazy"
                 />
+
                 <div className="text-slate-900">
                   <p className="font-extrabold leading-tight">Residencia Alma Dulce</p>
                   <p className="text-slate-600 text-sm">Un hogar para el adulto mayor</p>
