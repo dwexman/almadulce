@@ -4,6 +4,7 @@ import Hero from "./sections/Hero.jsx";
 import ResidencesSummary from "./sections/ResidencesSummary.jsx";
 import TeamSummary from "./sections/TeamSummary.jsx";
 import TestimonialsSection from "./sections/TestimonialsSummary.jsx";
+import Contacto from "./sections/Contacto.jsx";
 import Footer from "./components/layout/Footer.jsx";
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       <TeamSummary />
       <ResidencesSummary />
       <TestimonialsSection />
+      <Contacto />
       <Footer />
 
       
