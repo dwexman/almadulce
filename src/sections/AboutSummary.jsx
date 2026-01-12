@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense } from "react";
-import logo from "../assets/almadulcelogo.png";
+import logo from "../assets/logoft.png";
 import AboutBackdrop3D from "../components/three/AboutBackdrop3D.jsx";
 
 import {
@@ -12,23 +12,25 @@ import {
   Camera,
 } from "lucide-react";
 
+const BRAND_GRADIENT = "from-[#8C5095] via-[#6D5399] to-[#4897C3]";
+const BRAND_GRADIENT_SOFT = "from-[#8C5095]/10 via-[#6D5399]/10 to-[#4897C3]/10";
+const BRAND_GRADIENT_SOFT2 = "from-[#8C5095]/12 via-[#6D5399]/10 to-[#4897C3]/12";
+
 export default function AboutSummary() {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  useEffect(() => setIsVisible(true), []);
 
   return (
     <section
       className="relative overflow-hidden bg-white min-h-screen"
       aria-labelledby="about-heading"
     >
-     
       <h1 id="about-heading" className="sr-only">
         Sobre Alma Dulce - Quiénes Somos
       </h1>
 
+      {/* Fondo 3D */}
       <div className="absolute inset-0">
         <Suspense
           fallback={
@@ -39,13 +41,26 @@ export default function AboutSummary() {
         </Suspense>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/70 to-white/60 pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none [background:radial-gradient(900px_420px_at_12%_8%,rgba(56,189,248,.15),transparent_60%),radial-gradient(900px_460px_at_92%_20%,rgba(168,85,247,.15),transparent_55%)]" />
+      {/* Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/88 via-white/75 to-white/65 pointer-events-none" />
+      <div
+        className={[
+          "absolute inset-0 pointer-events-none",
+          "[background:",
+          "radial-gradient(900px_420px_at_12%_8%,rgba(140,80,149,.12),transparent_60%),",
+          "radial-gradient(900px_460px_at_92%_20%,rgba(72,151,195,.12),transparent_55%),",
+          "radial-gradient(760px_420px_at_55%_90%,rgba(109,83,153,.08),transparent_60%)",
+          "]",
+        ].join("")}
+      />
 
       <div className="relative mx-auto max-w-6xl px-4 py-16 md:py-24">
+        {/* Header */}
         <div
-          className={`flex flex-col sm:flex-row items-start justify-between gap-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          className={[
+            "flex flex-col sm:flex-row items-start justify-between gap-6 transition-all duration-700",
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+          ].join(" ")}
         >
           <div className="max-w-2xl">
             <p className="text-sm font-semibold tracking-wide uppercase text-slate-600 mb-2">
@@ -56,32 +71,60 @@ export default function AboutSummary() {
               <h2 className="text-4xl sm:text-5xl font-bold text-slate-900">
                 Quiénes somos
                 <span className="block mt-2">
-                  <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-fuchsia-600">
+                  <span
+                    className={[
+                      "inline-block text-transparent bg-clip-text bg-gradient-to-r",
+                      BRAND_GRADIENT,
+                    ].join(" ")}
+                  >
                     Alma Dulce
                   </span>
                 </span>
               </h2>
 
-              <div className="mt-4 h-1.5 w-32 sm:w-40 rounded-full bg-gradient-to-r from-sky-500 to-fuchsia-500" />
+              <div
+                className={[
+                  "mt-4 h-1.5 w-32 sm:w-40 rounded-full bg-gradient-to-r",
+                  BRAND_GRADIENT,
+                ].join(" ")}
+              />
             </div>
           </div>
 
+          {/* Logo con cajit” */}
           <div className="mt-6 sm:mt-0">
-            <div className="rounded-2xl bg-white/90 backdrop-blur-sm p-4 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow duration-300">
-              <img
-                src={logo}
-                alt="Logo de Residencia Alma Dulce"
-                className="h-14 w-auto object-contain"
-                loading="lazy"
+            <div className="relative">
+              {/* glow suave con brand */}
+              <div
+                className={[
+                  "absolute -inset-4 rounded-3xl blur-2xl opacity-70",
+                  "bg-gradient-to-r",
+                  BRAND_GRADIENT_SOFT2,
+                ].join(" ")}
+                aria-hidden="true"
               />
+
+              <div className="relative rounded-2xl bg-white/90 backdrop-blur-sm p-4 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow duration-300">
+                <img
+                  src={logo}
+                  alt="Logo de Residencia Alma Dulce"
+                  className="h-[200px] w-auto object-contain"
+                  loading="eager"
+                  draggable={false}
+                />
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Contenido principal */}
         <div
-          className={`mt-12 grid gap-8 lg:grid-cols-3 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          className={[
+            "mt-12 grid gap-8 lg:grid-cols-3 transition-all duration-700 delay-100",
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+          ].join(" ")}
         >
+          {/* Columna 1 */}
           <div className="lg:col-span-2">
             <GlassCard className="p-6 md:p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">
@@ -90,7 +133,15 @@ export default function AboutSummary() {
 
               <div className="space-y-5">
                 <p className="text-slate-700 text-lg leading-relaxed">
-                  En <span className="font-bold text-sky-600">Alma Dulce</span>{" "}
+                  En{" "}
+                  <span
+                    className={[
+                      "font-bold text-transparent bg-clip-text bg-gradient-to-r",
+                      BRAND_GRADIENT,
+                    ].join(" ")}
+                  >
+                    Alma Dulce
+                  </span>{" "}
                   acompañamos a las personas mayores con cercanía y respeto.
                   Queremos que la residencia se sienta como hogar: con rutinas
                   saludables, cariño diario y un equipo comprometido.
@@ -115,17 +166,31 @@ export default function AboutSummary() {
             </GlassCard>
           </div>
 
+          {/* Columna 2 */}
           <div className="space-y-6">
-            {/* Espacio para foto */}
+            {/* Imagen */}
             <GlassCard className="p-0 overflow-hidden">
-              <div className="aspect-[4/3] w-full grid place-items-center bg-gradient-to-br from-slate-50 to-slate-100 relative">
+              <div className="aspect-[4/3] w-full grid place-items-center bg-gradient-to-br from-slate-50 to-white relative">
+                <div
+                  className={[
+                    "absolute inset-0 opacity-90",
+                    "bg-[radial-gradient(700px_320px_at_20%_20%,rgba(140,80,149,.10),transparent_60%),",
+                    "radial-gradient(700px_360px_at_80%_30%,rgba(72,151,195,.10),transparent_60%)]",
+                  ].join("")}
+                />
                 <div className="relative text-center px-6">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-sky-100 to-fuchsia-100 mb-4">
+                  <div
+                    className={[
+                      "inline-flex items-center justify-center w-16 h-16 rounded-full mb-4",
+                      "bg-gradient-to-r",
+                      BRAND_GRADIENT_SOFT,
+                      "border border-slate-200/70",
+                      "backdrop-blur-sm",
+                    ].join(" ")}
+                  >
                     <Camera className="w-7 h-7 text-slate-700" strokeWidth={1.8} />
                   </div>
-                  <p className="text-slate-800 font-bold text-lg">
-                    Espacio para imagen
-                  </p>
+                  <p className="text-slate-900 font-bold text-lg">Espacio para imagen</p>
                   <p className="mt-2 text-slate-600 text-sm">
                     Residencia / Equipo / Actividades
                   </p>
@@ -133,11 +198,12 @@ export default function AboutSummary() {
               </div>
             </GlassCard>
 
+            {/* Cita */}
             <GlassCard className="p-6">
               <div className="flex items-start">
                 <span className="text-3xl text-slate-300 mr-3">"</span>
                 <div>
-                  <p className="text-slate-800 font-semibold text-lg">
+                  <p className="text-slate-900 font-semibold text-lg">
                     Un lugar para vivir con calma, compañía y cuidado profesional.
                   </p>
                   <p className="mt-3 text-slate-600 font-medium">
@@ -147,16 +213,26 @@ export default function AboutSummary() {
               </div>
             </GlassCard>
 
-            <GlassCard className="p-6 bg-gradient-to-br from-sky-50/50 to-fuchsia-50/50 border-sky-100">
-              <h4 className="font-bold text-slate-800 mb-3">
-                ¿Quieres conocer más?
-              </h4>
+            {/* CTA */}
+            <GlassCard
+              className={[
+                "p-6 border-slate-200/70",
+                "bg-gradient-to-br",
+                BRAND_GRADIENT_SOFT2,
+              ].join(" ")}
+            >
+              <h4 className="font-bold text-slate-900 mb-3">¿Quieres conocer más?</h4>
               <p className="text-slate-700 text-sm mb-4">
                 Contáctanos para una visita guiada o más información sobre nuestros
                 servicios.
               </p>
+
               <button
-                className="w-full py-3 bg-gradient-to-r from-sky-500 to-fuchsia-500 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                className={[
+                  "w-full py-3 text-white font-semibold rounded-xl transition-opacity hover:opacity-90",
+                  "bg-gradient-to-r",
+                  BRAND_GRADIENT,
+                ].join(" ")}
                 aria-label="Contactar a Residencia Alma Dulce"
               >
                 Solicitar información
@@ -165,9 +241,12 @@ export default function AboutSummary() {
           </div>
         </div>
 
+        {/* Stats */}
         <div
-          className={`mt-12 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          className={[
+            "mt-12 transition-all duration-700 delay-200",
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+          ].join(" ")}
         >
           <GlassCard className="p-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -202,6 +281,7 @@ function GlassCard({ className = "", children, ...props }) {
   );
 }
 
+// MiniCard
 function MiniCard({ text, icon: Icon }) {
   return (
     <div
@@ -217,8 +297,14 @@ function MiniCard({ text, icon: Icon }) {
         >
           <Icon className="w-5 h-5" strokeWidth={1.6} />
         </div>
+
         <div>
-          <div className="h-1 w-8 rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-500 mb-2" />
+          <div
+            className={[
+              "h-1 w-8 rounded-full bg-gradient-to-r mb-2",
+              BRAND_GRADIENT,
+            ].join(" ")}
+          />
           <p className="font-semibold text-slate-800">{text}</p>
         </div>
       </div>
@@ -226,10 +312,16 @@ function MiniCard({ text, icon: Icon }) {
   );
 }
 
+// StatCard
 function StatCard({ number, label }) {
   return (
     <div className="p-4">
-      <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-fuchsia-600">
+      <p
+        className={[
+          "text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r",
+          BRAND_GRADIENT,
+        ].join(" ")}
+      >
         {number}
       </p>
       <p className="text-slate-600 font-medium mt-2">{label}</p>
