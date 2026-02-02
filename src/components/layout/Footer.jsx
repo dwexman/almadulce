@@ -8,67 +8,40 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden">
-      {/* ✅ Línea degradé ARRIBA para separar del contenido */}
+      {/* Línea degradé arriba */}
       <div className={`h-[3px] w-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
 
-      {/* Fondo tipo navbar: gris claro + sombra suave */}
       <div className="bg-slate-50/70 backdrop-blur-xl shadow-[0_-12px_30px_-28px_rgba(15,23,42,0.35)]">
-        <div className="relative mx-auto max-w-6xl px-4 py-14">
-          {/* Top */}
-          <div className="grid gap-10 md:grid-cols-3">
-            {/* Brand + texto */}
-            <div className="md:col-span-2">
-              <div className="inline-flex items-center gap-6">
-                <img
-                  src={logo}
-                  alt="Residencia Alma Dulce"
-                  className="h-[200px] w-auto object-contain drop-shadow-[0_10px_18px_rgba(15,23,42,0.10)]"
-                  loading="lazy"
-                />
+        <div className="relative mx-auto max-w-6xl px-4 py-8 sm:py-10">
+          {/* Top (compacto) */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            {/* Brand mini */}
+            <div className="flex items-center gap-4">
+              <img
+                src={logo}
+                alt="Residencia Alma Dulce"
+                className="h-[72px] sm:h-[86px] w-auto object-contain drop-shadow-[0_10px_18px_rgba(15,23,42,0.10)]"
+                loading="lazy"
+                draggable={false}
+              />
 
-                <div className="text-slate-900">
-                  <p className="font-extrabold leading-tight">Residencia Alma Dulce</p>
-                  <p className="text-slate-600 text-sm">Un hogar para el adulto mayor</p>
-
-                  {/* mini acento degradé */}
-                  <div className={`mt-2 h-1 w-28 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
-                </div>
-              </div>
-
-              <p className="mt-5 text-slate-700 text-base leading-relaxed max-w-xl">
-                Acompañamos a las personas mayores con cercanía, respeto y atención profesional,
-                en un entorno cálido y seguro.
-              </p>
-
-              {/* CTA */}
-              <div className="mt-6">
-                <Link
-                  to="/residencias"
-                  className={[
-                    "group inline-flex items-center justify-center rounded-2xl px-6 py-3 font-bold",
-                    "text-white shadow-lg hover:shadow-xl transition hover:scale-[1.01] active:scale-[0.98]",
-                    "bg-gradient-to-r",
-                    BRAND_GRADIENT,
-                  ].join(" ")}
-                >
-                  Ver residencias
-                  <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
+              <div className="text-slate-900">
+                <p className="font-extrabold leading-tight">Residencia Alma Dulce</p>
+                <p className="text-slate-600 text-sm">Un hogar para el adulto mayor</p>
+                <div className={`mt-2 h-1 w-24 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
               </div>
             </div>
 
-            {/* Contacto */}
+            {/* Contacto (solo lo de la derecha) */}
             <div className="text-slate-900">
-              <p className="font-extrabold text-lg">Contacto</p>
+              <p className="font-extrabold text-base sm:text-lg">Contacto</p>
 
-              <div className="mt-4 space-y-3 text-slate-700">
+              <div className="mt-3 space-y-2 text-slate-700 text-sm sm:text-base">
                 <div className="flex items-start gap-3">
                   <IconPin />
                   <p className="leading-relaxed">
                     Santiago, Chile
-                    <span className="block text-slate-500 text-sm">
+                    <span className="block text-slate-500 text-xs sm:text-sm">
                       Visitas con coordinación previa
                     </span>
                   </p>
@@ -90,12 +63,12 @@ export default function Footer() {
               </div>
 
               {/* Redes */}
-              <div className="mt-6">
-                <p className="text-slate-600 text-sm font-semibold uppercase tracking-wide">
+              <div className="mt-4">
+                <p className="text-slate-600 text-xs font-semibold uppercase tracking-wide">
                   Síguenos
                 </p>
 
-                <div className="mt-3 flex items-center gap-3">
+                <div className="mt-2 flex items-center gap-2">
                   <SocialButton label="Instagram" />
                   <SocialButton label="Facebook" />
                   <SocialButton label="WhatsApp" />
@@ -104,10 +77,10 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-12 h-px w-full bg-slate-200/70" />
+          <div className="mt-7 h-px w-full bg-slate-200/70" />
 
           {/* Bottom */}
-          <div className="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-slate-600 text-sm">
+          <div className="mt-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-slate-600 text-xs sm:text-sm">
             <p>© {year} Residencia Alma Dulce. Todos los derechos reservados.</p>
             <div className="flex flex-wrap items-center gap-4">
               <Link to="/privacidad" className="hover:underline">
@@ -128,7 +101,7 @@ function SocialButton({ label }) {
   return (
     <button
       type="button"
-      className="rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/70 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-900/5 transition"
+      className="rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/70 px-3 py-2 text-xs sm:text-sm font-semibold text-slate-700 hover:bg-slate-900/5 transition"
       aria-label={label}
     >
       {label}

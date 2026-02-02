@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logoft.png";
-import { Instagram, Facebook, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const LINKS = [
   { label: "Inicio", to: "/" },
-  { label: "Quiénes somos", to: "/quienes-somos" },
-  { label: "Equipo", to: "/equipo" },
+  { label: "Nosotros", to: "/quienes-somos" }, // si tu ruta es /nosotros, cámbiala aquí
   { label: "Residencias", to: "/residencias" },
-  { label: "Testimonios", to: "/testimonios" },
+  { label: "Servicios", to: "/servicios" },
+  { label: "Próximos pasos", to: "/proximos-pasos" }, // si tu ruta es /primeros-pasos, cámbiala aquí
 ];
 
 const BRAND_GRADIENT = "from-[#8C5095] via-[#6D5399] to-[#4897C3]";
@@ -26,11 +26,10 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* ✅ shadow uniforme en TODO el navbar (no franja) */}
       <div className="bg-white/90 backdrop-blur-xl shadow-[0_12px_30px_-18px_rgba(15,23,42,0.35)]">
         <div className="w-full px-3 sm:px-4">
           <div className="h-20 flex items-center justify-between">
-            {/* Logo grande pegado a la izquierda */}
+            {/* Logo */}
             <div className="relative flex items-center">
               <div className="relative w-[220px] h-20">
                 <Link
@@ -80,23 +79,23 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Desktop icons */}
-            <div className="hidden md:flex items-center gap-2">
-              <button
-                type="button"
-                className="p-2 rounded-2xl bg-white hover:bg-slate-900/5 transition border border-slate-200/70"
-                aria-label="Instagram"
+            {/* Desktop CTA */}
+            <div className="hidden md:flex items-center">
+              <Link
+                to="/cotiza" // cámbialo si tu CTA va a otra ruta o ancla tipo "/#cotiza"
+                className={[
+                  "inline-flex items-center justify-center",
+                  "h-11 px-5 rounded-2xl",
+                  "text-white font-extrabold tracking-tight",
+                  "bg-gradient-to-r",
+                  BRAND_GRADIENT,
+                  "shadow-[0_14px_30px_-14px_rgba(109,83,153,0.6)]",
+                  "hover:brightness-110 active:brightness-95 transition",
+                  "focus:outline-none focus:ring-4 focus:ring-[#6D5399]/25",
+                ].join(" ")}
               >
-                <Instagram className="w-6 h-6 text-slate-700" strokeWidth={1.7} />
-              </button>
-
-              <button
-                type="button"
-                className="p-2 rounded-2xl bg-white hover:bg-slate-900/5 transition border border-slate-200/70"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-6 h-6 text-slate-700" strokeWidth={1.7} />
-              </button>
+                Cotiza aquí
+              </Link>
             </div>
 
             {/* Mobile menu button */}
@@ -121,11 +120,11 @@ export default function Navbar() {
             id="mobile-menu"
             className={[
               "md:hidden overflow-hidden transition-[max-height,opacity] duration-300",
-              open ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+              open ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0",
             ].join(" ")}
           >
             <div className="pb-4 pt-2">
-              <div className="flex flex-col gap-1 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200/70 shadow-sm p-2">
+              <div className="flex flex-col gap-2 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200/70 shadow-sm p-2">
                 {LINKS.map((l) => (
                   <NavLink
                     key={l.to}
@@ -157,29 +156,27 @@ export default function Navbar() {
                   </NavLink>
                 ))}
 
-                <div className="mt-2 flex items-center gap-2 px-2 pb-1">
-                  <button
-                    type="button"
-                    className="p-2 rounded-2xl bg-white hover:bg-slate-900/5 transition border border-slate-200/70"
-                    aria-label="Instagram"
-                  >
-                    <Instagram className="w-6 h-6 text-slate-700" strokeWidth={1.7} />
-                  </button>
-
-                  <button
-                    type="button"
-                    className="p-2 rounded-2xl bg-white hover:bg-slate-900/5 transition border border-slate-200/70"
-                    aria-label="Facebook"
-                  >
-                    <Facebook className="w-6 h-6 text-slate-700" strokeWidth={1.7} />
-                  </button>
-                </div>
+                <Link
+                  to="/cotiza"
+                  onClick={() => setOpen(false)}
+                  className={[
+                    "mt-1 inline-flex items-center justify-center",
+                    "h-11 px-5 rounded-2xl",
+                    "text-white font-extrabold tracking-tight",
+                    "bg-gradient-to-r",
+                    BRAND_GRADIENT,
+                    "shadow-[0_14px_30px_-14px_rgba(109,83,153,0.6)]",
+                    "hover:brightness-110 active:brightness-95 transition",
+                  ].join(" ")}
+                >
+                  Cotiza aquí
+                </Link>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ✅ ÚNICA separación: línea degradé */}
+        {/* Línea degradé */}
         <div className={`h-[4px] w-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
       </div>
     </header>

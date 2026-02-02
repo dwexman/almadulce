@@ -1,330 +1,154 @@
-import { useState, useEffect, Suspense } from "react";
-import logo from "../assets/logoft.png";
-import AboutBackdrop3D from "../components/three/AboutBackdrop3D.jsx";
+import fondo from "../assets/fondo.png";
 
-import {
-  ConciergeBell,
-  UserRound,
-  Home,
-  Leaf,
-  UtensilsCrossed,
-  ShieldCheck,
-  Camera,
-} from "lucide-react";
-
-const BRAND_GRADIENT = "from-[#8C5095] via-[#6D5399] to-[#4897C3]";
-const BRAND_GRADIENT_SOFT = "from-[#8C5095]/10 via-[#6D5399]/10 to-[#4897C3]/10";
-const BRAND_GRADIENT_SOFT2 = "from-[#8C5095]/12 via-[#6D5399]/10 to-[#4897C3]/12";
+import therapy from "../assets/therapy.png";
+import ambiente from "../assets/ambiente.png";
+import family from "../assets/family.png";
+import atencion from "../assets/atencion.png";
 
 export default function AboutSummary() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => setIsVisible(true), []);
+  const ITEMS = [
+    {
+      title: "Rehabilitación\ny terapias",
+      text: "Terapias y rehabilitación de lunes a viernes adaptadas a cada residente.",
+      icon: therapy,
+    },
+    {
+      title: "Un ambiente\nque cuida",
+      text: "Un entorno acogedor, tranquilo y con una preocupación genuina por cada persona.",
+      icon: ambiente,
+    },
+    {
+      title: "Casa abierta\na la familia",
+      text: "Visitas con horario liberado porque la familia es parte fundamental del cuidado.",
+      icon: family,
+    },
+    {
+      title: "Atención\nen conjunto",
+      text: "Trabajamos junto a la familia para entregar una atención personalizada.",
+      icon: atencion,
+    },
+  ];
 
   return (
-    <section
-      className="relative overflow-hidden bg-white min-h-screen"
-      aria-labelledby="about-heading"
-    >
-      <h1 id="about-heading" className="sr-only">
-        Sobre Alma Dulce - Quiénes Somos
-      </h1>
-
-      {/* Fondo 3D */}
+    <section className="relative overflow-hidden py-16 sm:py-20">
+      {/* Fondo */}
       <div className="absolute inset-0">
-        <Suspense
-          fallback={
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white" />
-          }
-        >
-          <AboutBackdrop3D />
-        </Suspense>
+        <img
+          src={fondo}
+          alt=""
+          className="h-full w-full object-cover object-center"
+          draggable={false}
+          loading="lazy"
+        />
+        {/* velo suave + luz central */}
+        <div className="absolute inset-0 bg-white/20" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(900px 420px at 50% 20%, rgba(255,255,255,0.55), transparent 60%)," +
+              "radial-gradient(900px 520px at 15% 85%, rgba(140,80,149,0.10), transparent 65%)," +
+              "radial-gradient(900px 520px at 85% 85%, rgba(72,151,195,0.10), transparent 65%)",
+          }}
+        />
       </div>
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/88 via-white/75 to-white/65 pointer-events-none" />
-      <div
-        className={[
-          "absolute inset-0 pointer-events-none",
-          "[background:",
-          "radial-gradient(900px_420px_at_12%_8%,rgba(140,80,149,.12),transparent_60%),",
-          "radial-gradient(900px_460px_at_92%_20%,rgba(72,151,195,.12),transparent_55%),",
-          "radial-gradient(760px_420px_at_55%_90%,rgba(109,83,153,.08),transparent_60%)",
-          "]",
-        ].join("")}
-      />
-
-      <div className="relative mx-auto max-w-6xl px-4 py-16 md:py-24">
-        {/* Header */}
-        <div
-          className={[
-            "flex flex-col sm:flex-row items-start justify-between gap-6 transition-all duration-700",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-          ].join(" ")}
-        >
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold tracking-wide uppercase text-slate-600 mb-2">
-              Conócenos
-            </p>
-
-            <div className="relative mt-3">
-              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900">
-                Quiénes somos
-                <span className="block mt-2">
-                  <span
-                    className={[
-                      "inline-block text-transparent bg-clip-text bg-gradient-to-r",
-                      BRAND_GRADIENT,
-                    ].join(" ")}
-                  >
-                    Alma Dulce
-                  </span>
-                </span>
-              </h2>
-
-              <div
-                className={[
-                  "mt-4 h-1.5 w-32 sm:w-40 rounded-full bg-gradient-to-r",
-                  BRAND_GRADIENT,
-                ].join(" ")}
-              />
-            </div>
-          </div>
-
-          {/* Logo con cajit” */}
-          <div className="mt-6 sm:mt-0">
-            <div className="relative">
-              {/* glow suave con brand */}
-              <div
-                className={[
-                  "absolute -inset-4 rounded-3xl blur-2xl opacity-70",
-                  "bg-gradient-to-r",
-                  BRAND_GRADIENT_SOFT2,
-                ].join(" ")}
-                aria-hidden="true"
-              />
-
-              <div className="relative rounded-2xl bg-white/90 backdrop-blur-sm p-4 shadow-lg border border-slate-100 hover:shadow-xl transition-shadow duration-300">
-                <img
-                  src={logo}
-                  alt="Logo de Residencia Alma Dulce"
-                  className="h-[200px] w-auto object-contain"
-                  loading="eager"
-                  draggable={false}
-                />
-              </div>
-            </div>
-          </div>
+      {/* Contenido */}
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="text-center">
+          <h2 className="text-center text-4xl sm:text-5xl font-serif text-[#3d2b3f]">
+            Nuestro Enfoque
+          </h2>
+          <div className="mx-auto mt-4 h-1.5 w-28 rounded-full bg-gradient-to-r from-[#8C5095] via-[#6D5399] to-[#4897C3]" />
         </div>
 
-        {/* Contenido principal */}
-        <div
-          className={[
-            "mt-12 grid gap-8 lg:grid-cols-3 transition-all duration-700 delay-100",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-          ].join(" ")}
-        >
-          {/* Columna 1 */}
-          <div className="lg:col-span-2">
-            <GlassCard className="p-6 md:p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">
-                Un hogar cálido, seguro y humano
-              </h3>
-
-              <div className="space-y-5">
-                <p className="text-slate-700 text-lg leading-relaxed">
-                  En{" "}
-                  <span
-                    className={[
-                      "font-bold text-transparent bg-clip-text bg-gradient-to-r",
-                      BRAND_GRADIENT,
-                    ].join(" ")}
-                  >
-                    Alma Dulce
-                  </span>{" "}
-                  acompañamos a las personas mayores con cercanía y respeto.
-                  Queremos que la residencia se sienta como hogar: con rutinas
-                  saludables, cariño diario y un equipo comprometido.
-                </p>
-
-                <p className="text-slate-700 text-lg leading-relaxed">
-                  La tranquilidad de la familia también importa: por eso cuidamos
-                  cada detalle del día a día y promovemos actividades para mantener
-                  cuerpo y mente activos.
-                </p>
-              </div>
-
-              {/* Grid de características */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <MiniCard text="Atención dedicada" icon={ConciergeBell} />
-                <MiniCard text="Cuidado personalizado" icon={UserRound} />
-                <MiniCard text="Ambiente residencial" icon={Home} />
-                <MiniCard text="Bienestar y calma" icon={Leaf} />
-                <MiniCard text="Alimentación cuidada" icon={UtensilsCrossed} />
-                <MiniCard text="Seguridad 24/7" icon={ShieldCheck} />
-              </div>
-            </GlassCard>
-          </div>
-
-          {/* Columna 2 */}
-          <div className="space-y-6">
-            {/* Imagen */}
-            <GlassCard className="p-0 overflow-hidden">
-              <div className="aspect-[4/3] w-full grid place-items-center bg-gradient-to-br from-slate-50 to-white relative">
-                <div
-                  className={[
-                    "absolute inset-0 opacity-90",
-                    "bg-[radial-gradient(700px_320px_at_20%_20%,rgba(140,80,149,.10),transparent_60%),",
-                    "radial-gradient(700px_360px_at_80%_30%,rgba(72,151,195,.10),transparent_60%)]",
-                  ].join("")}
-                />
-                <div className="relative text-center px-6">
-                  <div
-                    className={[
-                      "inline-flex items-center justify-center w-16 h-16 rounded-full mb-4",
-                      "bg-gradient-to-r",
-                      BRAND_GRADIENT_SOFT,
-                      "border border-slate-200/70",
-                      "backdrop-blur-sm",
-                    ].join(" ")}
-                  >
-                    <Camera className="w-7 h-7 text-slate-700" strokeWidth={1.8} />
-                  </div>
-                  <p className="text-slate-900 font-bold text-lg">Espacio para imagen</p>
-                  <p className="mt-2 text-slate-600 text-sm">
-                    Residencia / Equipo / Actividades
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
-
-            {/* Cita */}
-            <GlassCard className="p-6">
-              <div className="flex items-start">
-                <span className="text-3xl text-slate-300 mr-3">"</span>
-                <div>
-                  <p className="text-slate-900 font-semibold text-lg">
-                    Un lugar para vivir con calma, compañía y cuidado profesional.
-                  </p>
-                  <p className="mt-3 text-slate-600 font-medium">
-                    — Residencia Alma Dulce
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
-
-            {/* CTA */}
-            <GlassCard
-              className={[
-                "p-6 border-slate-200/70",
-                "bg-gradient-to-br",
-                BRAND_GRADIENT_SOFT2,
-              ].join(" ")}
-            >
-              <h4 className="font-bold text-slate-900 mb-3">¿Quieres conocer más?</h4>
-              <p className="text-slate-700 text-sm mb-4">
-                Contáctanos para una visita guiada o más información sobre nuestros
-                servicios.
-              </p>
-
-              <button
-                className={[
-                  "w-full py-3 text-white font-semibold rounded-xl transition-opacity hover:opacity-90",
-                  "bg-gradient-to-r",
-                  BRAND_GRADIENT,
-                ].join(" ")}
-                aria-label="Contactar a Residencia Alma Dulce"
-              >
-                Solicitar información
-              </button>
-            </GlassCard>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div
-          className={[
-            "mt-12 transition-all duration-700 delay-200",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-          ].join(" ")}
-        >
-          <GlassCard className="p-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <StatCard number="24/7" label="Atención" />
-              <StatCard number="100%" label="Personal cualificado" />
-              <StatCard number="10+" label="Años de experiencia" />
-              <StatCard number="★" label="Calidad" />
-            </div>
-          </GlassCard>
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {ITEMS.map((item, idx) => (
+            <EnfoqueCard
+              key={item.title}
+              title={item.title}
+              text={item.text}
+              icon={item.icon}
+              delayMs={idx * 70}
+            />
+          ))}
         </div>
       </div>
+
+      {/* animaciones */}
+      <style>{`
+        @keyframes floaty {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(14px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 }
 
-// GlassCard
-function GlassCard({ className = "", children, ...props }) {
+function EnfoqueCard({ title, text, icon, delayMs = 0 }) {
   return (
     <div
       className={[
-        "relative rounded-2xl border border-slate-200/80",
-        "bg-white/85 backdrop-blur-sm",
-        "shadow-lg hover:shadow-xl transition-all duration-300",
-        "overflow-hidden",
-        className,
+        "group relative text-center rounded-3xl",
+        "px-6 py-7",
+        "bg-white/35 backdrop-blur-md",
+        "border border-white/55",
+        "shadow-[0_22px_50px_-38px_rgba(40,10,60,0.55)]",
+        "transition-all duration-300",
+        "hover:bg-white/45 hover:shadow-[0_28px_60px_-40px_rgba(40,10,60,0.65)]",
+        "hover:-translate-y-1",
       ].join(" ")}
-      {...props}
+      style={{
+        animation: `fadeUp 650ms ease-out both`,
+        animationDelay: `${delayMs}ms`,
+      }}
     >
-      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/30" />
-      <div className="relative p-6">{children}</div>
-    </div>
-  );
-}
+      {/* brillo suave */}
+      <div
+        className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background:
+            "radial-gradient(520px 220px at 50% 0%, rgba(255,255,255,0.55), transparent 60%)",
+        }}
+      />
 
-// MiniCard
-function MiniCard({ text, icon: Icon }) {
-  return (
-    <div
-      className="rounded-xl border border-slate-200 bg-white/80 p-4 hover:bg-white hover:shadow-md transition-all duration-200 cursor-pointer"
-      role="button"
-      tabIndex={0}
-      aria-label={text}
-    >
-      <div className="flex items-center gap-3">
+      {/* Círculo glass */}
+      <div className="relative mx-auto w-[110px] h-[110px] rounded-full flex items-center justify-center">
         <div
-          className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-slate-200 text-slate-700"
-          aria-hidden="true"
-        >
-          <Icon className="w-5 h-5" strokeWidth={1.6} />
-        </div>
-
-        <div>
-          <div
-            className={[
-              "h-1 w-8 rounded-full bg-gradient-to-r mb-2",
-              BRAND_GRADIENT,
-            ].join(" ")}
-          />
-          <p className="font-semibold text-slate-800">{text}</p>
-        </div>
+          className={[
+            "absolute inset-0 rounded-full",
+            "bg-white/40 backdrop-blur-lg",
+            "border border-white/65",
+            "shadow-[0_18px_46px_-30px_rgba(40,10,60,0.60)]",
+            "transition-all duration-300",
+            "group-hover:bg-white/55",
+          ].join(" ")}
+        />
+        <img
+          src={icon}
+          alt=""
+          className="relative w-14 h-14 object-contain"
+          draggable={false}
+          loading="lazy"
+          style={{ animation: "floaty 3.4s ease-in-out infinite" }}
+        />
       </div>
-    </div>
-  );
-}
 
-// StatCard
-function StatCard({ number, label }) {
-  return (
-    <div className="p-4">
-      <p
-        className={[
-          "text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r",
-          BRAND_GRADIENT,
-        ].join(" ")}
-      >
-        {number}
+      <h3 className="mt-6 text-xl sm:text-[22px] font-semibold text-[#3d2b3f] whitespace-pre-line leading-snug">
+        {title}
+      </h3>
+
+      <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-[#4b3a4f]/90">
+        {text}
       </p>
-      <p className="text-slate-600 font-medium mt-2">{label}</p>
+
+      {/* línea decorativa */}
+      <div className="mx-auto mt-5 h-[3px] w-12 rounded-full bg-gradient-to-r from-[#8C5095] via-[#6D5399] to-[#4897C3] opacity-70 group-hover:opacity-100 transition-opacity" />
     </div>
   );
 }
