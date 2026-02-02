@@ -6,12 +6,12 @@ import fondo from "../assets/fondo.png";
 import img1 from "../assets/life/1.JPG";
 import img2 from "../assets/life/2.JPG";
 import img3 from "../assets/life/3.JPG";
-import img4 from "../assets/life/4.JPG";
-import img5 from "../assets/life/5.JPG";
-import img6 from "../assets/life/6.JPG";
-import img7 from "../assets/life/7.JPG";
-import img8 from "../assets/life/8.JPG";
-import img9 from "../assets/life/9.JPG";
+import img4 from "../assets/life/4.jpg";
+import img5 from "../assets/life/5.jpg";
+import img6 from "../assets/life/6.jpg";
+import img7 from "../assets/life/7.jpg";
+import img8 from "../assets/life/8.jpg";
+import img9 from "../assets/life/9.jpg";
 
 export default function LifeSummary() {
   const IMAGES = useMemo(
