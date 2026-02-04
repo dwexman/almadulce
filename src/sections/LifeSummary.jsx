@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-import fondo from "../assets/fondo.png";
+import fondo from "../assets/fondo3.png";
 
 import img1 from "../assets/life/1.JPG";
 import img2 from "../assets/life/2.JPG";
@@ -47,7 +47,6 @@ export default function LifeSummary() {
 
   return (
     <section className="relative overflow-hidden py-16 sm:py-20">
-      {/* ✅ Fondo imagen */}
       <div className="absolute inset-0">
         <img
           src={fondo}
@@ -56,7 +55,6 @@ export default function LifeSummary() {
           draggable={false}
           loading="lazy"
         />
-        {/* velo suave + luces */}
         <div className="absolute inset-0 bg-white/25" />
         <div
           className="absolute inset-0 pointer-events-none"
@@ -71,13 +69,12 @@ export default function LifeSummary() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl font-serif text-[#3d2b3f]">
+          <h2 className="text-4xl sm:text-5xl font-serif italic text-[#4A2E52]">
             Nuestra vida en Alma Dulce
           </h2>
-          <div className="mx-auto mt-4 h-1.5 w-28 rounded-full bg-gradient-to-r from-[#8C5095] via-[#6D5399] to-[#4897C3]" />
+          <div className="mx-auto mt-4 h-1.5 w-28 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]" />
         </div>
 
-        {/* Galería */}
         <div className="mt-12 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {IMAGES.map((src, idx) => (
             <button
@@ -91,11 +88,10 @@ export default function LifeSummary() {
                 "shadow-[0_22px_50px_-40px_rgba(40,10,60,0.55)]",
                 "transition-all duration-300",
                 "hover:-translate-y-1 hover:bg-white/55",
-                "focus:outline-none focus:ring-4 focus:ring-[#6D5399]/20",
+                "focus:outline-none focus:ring-4 focus:ring-[#7B6AB2]/20",
               ].join(" ")}
               aria-label={`Abrir imagen ${idx + 1}`}
             >
-              {/* Mantiene todas “más o menos” mismo tamaño */}
               <div className="aspect-[4/3] w-full overflow-hidden">
                 <img
                   src={src}
@@ -106,13 +102,11 @@ export default function LifeSummary() {
                 />
               </div>
 
-              {/* overlay sutil */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              {/* chip “ver” */}
               <div className="absolute left-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur-md border border-white/60 px-3 py-1 text-sm font-semibold text-slate-800">
-                  Ver foto <span className="text-slate-500">↗</span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur-md border border-white/60 px-3 py-1 text-sm font-serif text-[#4A2E52]">
+                  Ver foto <span className="text-[#6B5670]">↗</span>
                 </span>
               </div>
             </button>
@@ -120,7 +114,6 @@ export default function LifeSummary() {
         </div>
       </div>
 
-      {/* Lightbox */}
       {open && (
         <div
           className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
@@ -169,7 +162,7 @@ export default function LifeSummary() {
               </button>
 
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
-                <span className="rounded-full bg-white/85 backdrop-blur-md border border-white/60 px-3 py-1 text-sm font-semibold text-slate-800">
+                <span className="rounded-full bg-white/85 backdrop-blur-md border border-white/60 px-3 py-1 text-sm font-serif text-[#4A2E52]">
                   {active + 1} / {IMAGES.length}
                 </span>
               </div>

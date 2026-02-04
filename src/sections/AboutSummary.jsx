@@ -1,9 +1,9 @@
-import fondo from "../assets/fondo.png";
+import fondo from "../assets/fondo3.png";
 
-import therapy from "../assets/therapy.png";
-import ambiente from "../assets/ambiente.png";
-import family from "../assets/family.png";
-import atencion from "../assets/atencion.png";
+import therapy from "../assets/icon_2.png";
+import ambiente from "../assets/icon_4.png";
+import family from "../assets/icon_6.png";
+import atencion from "../assets/icon_3.png";
 
 export default function AboutSummary() {
   const ITEMS = [
@@ -31,7 +31,6 @@ export default function AboutSummary() {
 
   return (
     <section className="relative overflow-hidden py-16 sm:py-20">
-      {/* Fondo */}
       <div className="absolute inset-0">
         <img
           src={fondo}
@@ -40,7 +39,6 @@ export default function AboutSummary() {
           draggable={false}
           loading="lazy"
         />
-        {/* velo suave + luz central */}
         <div className="absolute inset-0 bg-white/20" />
         <div
           className="absolute inset-0 pointer-events-none"
@@ -53,13 +51,12 @@ export default function AboutSummary() {
         />
       </div>
 
-      {/* Contenido */}
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center">
-          <h2 className="text-center text-4xl sm:text-5xl font-serif text-[#3d2b3f]">
+          <h2 className="text-center text-4xl sm:text-5xl font-serif italic text-[#4A2E52]">
             Nuestro Enfoque
           </h2>
-          <div className="mx-auto mt-4 h-1.5 w-28 rounded-full bg-gradient-to-r from-[#8C5095] via-[#6D5399] to-[#4897C3]" />
+          <div className="mx-auto mt-4 h-1.5 w-28 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]" />
         </div>
 
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -70,12 +67,12 @@ export default function AboutSummary() {
               text={item.text}
               icon={item.icon}
               delayMs={idx * 70}
+              isBigIcon={item.icon === family}
             />
           ))}
         </div>
       </div>
 
-      {/* animaciones */}
       <style>{`
         @keyframes floaty {
           0%, 100% { transform: translateY(0); }
@@ -90,7 +87,7 @@ export default function AboutSummary() {
   );
 }
 
-function EnfoqueCard({ title, text, icon, delayMs = 0 }) {
+function EnfoqueCard({ title, text, icon, delayMs = 0, isBigIcon = false }) {
   return (
     <div
       className={[
@@ -108,7 +105,6 @@ function EnfoqueCard({ title, text, icon, delayMs = 0 }) {
         animationDelay: `${delayMs}ms`,
       }}
     >
-      {/* brillo suave */}
       <div
         className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
@@ -117,38 +113,32 @@ function EnfoqueCard({ title, text, icon, delayMs = 0 }) {
         }}
       />
 
-      {/* Círculo glass */}
-      <div className="relative mx-auto w-[110px] h-[110px] rounded-full flex items-center justify-center">
-        <div
-          className={[
-            "absolute inset-0 rounded-full",
-            "bg-white/40 backdrop-blur-lg",
-            "border border-white/65",
-            "shadow-[0_18px_46px_-30px_rgba(40,10,60,0.60)]",
-            "transition-all duration-300",
-            "group-hover:bg-white/55",
-          ].join(" ")}
-        />
+      {/* ZONA FIJA DEL ICONO (esto alinea el texto en todas) */}
+      <div className="mx-auto flex items-center justify-center h-[190px] sm:h-[200px] lg:h-[230px]">
         <img
           src={icon}
           alt=""
-          className="relative w-14 h-14 object-contain"
+          className={[
+            "object-contain",
+            isBigIcon
+              ? "w-[175px] h-[175px] sm:w-[185px] sm:h-[185px] lg:w-[220px] lg:h-[220px]"
+              : "w-[115px] h-[115px] sm:w-[130px] sm:h-[130px] lg:w-[155px] lg:h-[155px]",
+          ].join(" ")}
+          style={{ animation: "floaty 3.4s ease-in-out infinite" }}
           draggable={false}
           loading="lazy"
-          style={{ animation: "floaty 3.4s ease-in-out infinite" }}
         />
       </div>
 
-      <h3 className="mt-6 text-xl sm:text-[22px] font-semibold text-[#3d2b3f] whitespace-pre-line leading-snug">
+      <h3 className="mt-6 text-[22px] sm:text-[24px] font-serif text-[#4A2E52] whitespace-pre-line leading-snug">
         {title}
       </h3>
 
-      <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-[#4b3a4f]/90">
+      <p className="mt-3 font-serif text-[15px] sm:text-base leading-relaxed text-[#6B5670]">
         {text}
       </p>
 
-      {/* línea decorativa */}
-      <div className="mx-auto mt-5 h-[3px] w-12 rounded-full bg-gradient-to-r from-[#8C5095] via-[#6D5399] to-[#4897C3] opacity-70 group-hover:opacity-100 transition-opacity" />
+      <div className="mx-auto mt-5 h-[3px] w-12 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9] opacity-70 group-hover:opacity-100 transition-opacity" />
     </div>
   );
 }
