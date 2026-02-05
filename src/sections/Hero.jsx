@@ -8,6 +8,18 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#FFF7FB]">
       <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 lg:hidden">
+          <img
+            src={portada}
+            alt=""
+            className="h-full w-full object-cover object-[70%_25%] contrast-[1.08] brightness-[0.98]"
+            draggable={false}
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FFF7FB]/55 via-[#FFF7FB]/30 to-[#FFF7FB]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FFF7FB]/85 via-[#FFF7FB]/55 to-transparent" />
+        </div>
+
         <div className="absolute inset-y-0 right-0 w-[46%] min-w-[420px] hidden lg:block">
           <img
             src={portada}
@@ -61,7 +73,7 @@ export default function Hero() {
                 className={[
                   "inline-flex items-center justify-center gap-2",
                   "h-12 px-6 rounded-2xl",
-                  "bg-white/80 backdrop-blur-sm",
+                  "bg-white/85 backdrop-blur-sm",
                   "border border-white/70",
                   "text-[#4A2E52] font-semibold",
                   "shadow-[0_10px_22px_-16px_rgba(40,10,60,0.25)]",
@@ -73,19 +85,6 @@ export default function Hero() {
                 </span>
                 Encuentra tu Alma Dulce
               </Link>
-            </div>
-
-            <div className="mt-10 lg:hidden">
-              <div className="relative overflow-hidden rounded-3xl">
-                <img
-                  src={portada}
-                  alt="Residencia Alma Dulce"
-                  className="h-[260px] w-full object-cover object-[70%_30%]"
-                  draggable={false}
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#FFF7FB]/45 via-transparent to-white/10" />
-              </div>
             </div>
           </div>
         </div>
