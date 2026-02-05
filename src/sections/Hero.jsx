@@ -1,27 +1,32 @@
 import { Link } from "react-router-dom";
 import { MapPin } from "lucide-react";
-import hero from "../assets/hero.png";
+import portada from "../assets/portada.jpeg";
 
 const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="absolute inset-0">
-        <img
-          src={hero}
-          alt="Residencia Alma Dulce"
-          className="h-full w-full object-cover object-center"
-          loading="eager"
-          draggable={false}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/60 to-white/25" />
-        <div className="absolute inset-0 bg-black/5" />
+    <section className="relative overflow-hidden bg-[#FFF7FB]">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-y-0 right-0 w-[46%] min-w-[420px] hidden lg:block">
+          <img
+            src={portada}
+            alt=""
+            className="h-full w-full object-cover object-[70%_30%]"
+            draggable={false}
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#FFF7FB]" />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#FFF7FB]/70" />
+        </div>
+
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-[#C35AAE]/10 blur-3xl" />
+        <div className="absolute -bottom-52 -right-52 h-[620px] w-[620px] rounded-full bg-[#63A6C9]/12 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="min-h-[520px] sm:min-h-[560px] lg:min-h-[620px] flex items-center">
-          <div className="max-w-2xl pt-10 pb-14">
+          <div className="max-w-2xl pt-10 pb-14 lg:pr-10">
             <h1 className="text-[#4A2E52] font-serif italic font-semibold tracking-tight leading-[1.05] text-4xl sm:text-5xl lg:text-6xl">
               Un hogar donde
               <br />
@@ -56,7 +61,7 @@ export default function Hero() {
                 className={[
                   "inline-flex items-center justify-center gap-2",
                   "h-12 px-6 rounded-2xl",
-                  "bg-white/85 backdrop-blur-md",
+                  "bg-white/80 backdrop-blur-sm",
                   "border border-white/70",
                   "text-[#4A2E52] font-semibold",
                   "shadow-[0_10px_22px_-16px_rgba(40,10,60,0.25)]",
@@ -68,6 +73,19 @@ export default function Hero() {
                 </span>
                 Encuentra tu Alma Dulce
               </Link>
+            </div>
+
+            <div className="mt-10 lg:hidden">
+              <div className="relative overflow-hidden rounded-3xl">
+                <img
+                  src={portada}
+                  alt="Residencia Alma Dulce"
+                  className="h-[260px] w-full object-cover object-[70%_30%]"
+                  draggable={false}
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#FFF7FB]/45 via-transparent to-white/10" />
+              </div>
             </div>
           </div>
         </div>
