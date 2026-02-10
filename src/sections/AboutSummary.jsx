@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import fondo from "../assets/fondo3.png";
 
 import therapy from "../assets/icon_2.png";
@@ -5,12 +7,18 @@ import ambiente from "../assets/icon_4.png";
 import family from "../assets/icon_6.png";
 import atencion from "../assets/icon_3.png";
 
+const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
+const HERO_TITLE = "text-[#8A3FA8]";
+const HERO_TEXT = "text-[#6F2F86]";
+
 export default function AboutSummary() {
   const ITEMS = [
     {
       title: "Rehabilitación\ny terapias",
       text: "Terapias y rehabilitación de lunes a viernes adaptadas a cada residente.",
       icon: therapy,
+      href: "/terapias",
+      cta: "+ info",
     },
     {
       title: "Un ambiente\nque cuida",
@@ -53,10 +61,13 @@ export default function AboutSummary() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center">
-          <h2 className="text-center text-4xl sm:text-5xl font-serif italic text-[#4A2E52]">
+          <h2 className={`text-center text-4xl sm:text-5xl font-serif italic ${HERO_TITLE}`}>
             Nuestro Enfoque
           </h2>
           <div className="mx-auto mt-4 h-1.5 w-28 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]" />
+          <p className={`mx-auto mt-4 max-w-2xl font-serif text-[16px] sm:text-[17px] leading-relaxed ${HERO_TEXT}`}>
+            Cuidamos con amor, acompañamiento profesional y rehabilitación integral.
+          </p>
         </div>
 
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -68,6 +79,8 @@ export default function AboutSummary() {
               icon={item.icon}
               delayMs={idx * 70}
               isBigIcon={item.icon === family}
+              href={item.href}
+              cta={item.cta}
             />
           ))}
         </div>
@@ -87,7 +100,15 @@ export default function AboutSummary() {
   );
 }
 
-function EnfoqueCard({ title, text, icon, delayMs = 0, isBigIcon = false }) {
+function EnfoqueCard({
+  title,
+  text,
+  icon,
+  delayMs = 0,
+  isBigIcon = false,
+  href,
+  cta,
+}) {
   return (
     <div
       className={[
@@ -99,6 +120,7 @@ function EnfoqueCard({ title, text, icon, delayMs = 0, isBigIcon = false }) {
         "transition-all duration-300",
         "hover:bg-white/45 hover:shadow-[0_28px_60px_-40px_rgba(40,10,60,0.65)]",
         "hover:-translate-y-1",
+        "flex flex-col",
       ].join(" ")}
       style={{
         animation: `fadeUp 650ms ease-out both`,
@@ -113,7 +135,7 @@ function EnfoqueCard({ title, text, icon, delayMs = 0, isBigIcon = false }) {
         }}
       />
 
-      {/* ZONA FIJA DEL ICONO (esto alinea el texto en todas) */}
+      {/* Icon */}
       <div className="mx-auto flex items-center justify-center h-[190px] sm:h-[200px] lg:h-[230px]">
         <img
           src={icon}
@@ -130,15 +152,38 @@ function EnfoqueCard({ title, text, icon, delayMs = 0, isBigIcon = false }) {
         />
       </div>
 
-      <h3 className="mt-6 text-[22px] sm:text-[24px] font-serif text-[#4A2E52] whitespace-pre-line leading-snug">
+      <h3 className={`mt-6 text-[22px] sm:text-[24px] font-serif italic whitespace-pre-line leading-snug ${HERO_TITLE}`}>
         {title}
       </h3>
 
-      <p className="mt-3 font-serif text-[15px] sm:text-base leading-relaxed text-[#6B5670]">
+      <p className={`mt-3 font-serif text-[15px] sm:text-base leading-relaxed ${HERO_TEXT}`}>
         {text}
       </p>
 
       <div className="mx-auto mt-5 h-[3px] w-12 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9] opacity-70 group-hover:opacity-100 transition-opacity" />
+
+      {/* CTA solo si viene href */}
+      {href ? (
+        <div className="mt-6 flex justify-center">
+          <Link
+            to={href}
+            className={[
+              "inline-flex items-center justify-center",
+              "h-11 px-5 rounded-2xl",
+              "text-white font-bold",
+              "bg-gradient-to-r",
+              BRAND_GRADIENT,
+              "shadow-[0_16px_34px_-18px_rgba(195,90,174,0.40)]",
+              "hover:brightness-110 active:brightness-95 transition",
+              "focus:outline-none focus:ring-4 focus:ring-[#C35AAE]/20",
+            ].join(" ")}
+          >
+            {cta || "+ info"}
+          </Link>
+        </div>
+      ) : (
+        <div className="mt-6 h-11" />
+      )}
     </div>
   );
 }

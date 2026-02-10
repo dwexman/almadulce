@@ -5,9 +5,9 @@ import { Menu, X } from "lucide-react";
 
 const LINKS = [
   { label: "Inicio", to: "/" },
-  { label: "Nosotros", to: "/quienes-somos" }, // si tu ruta es /nosotros, cámbiala aquí
+  { label: "Nosotros", to: "/nosotros" },
   { label: "Residencias", to: "/residencias" },
-  { label: "Servicios", to: "/servicios" },
+  { label: "Terapias", to: "/terapias" },
   { label: "Próximos pasos", to: "/proximos-pasos" }, // si tu ruta es /primeros-pasos, cámbiala aquí
 ];
 

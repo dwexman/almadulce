@@ -8,14 +8,24 @@ import img2 from "../assets/life/2.JPG";
 import img3 from "../assets/life/3.JPG";
 import img4 from "../assets/life/4.jpg";
 import img5 from "../assets/life/5.jpg";
-import img6 from "../assets/life/6.jpg";
 import img7 from "../assets/life/7.jpg";
 import img8 from "../assets/life/8.jpg";
-import img9 from "../assets/life/9.jpg";
+
+const HERO_TITLE = "text-[#8A3FA8]";
+const HERO_TEXT = "text-[#6F2F86]";
 
 export default function LifeSummary() {
-  const IMAGES = useMemo(
-    () => [img1, img2, img3, img4, img5, img6, img7, img8, img9],
+  const IMAGES = useMemo(() => [img1, img2, img3, img4, img5, img7, img8], []);
+
+  
+  const POS = useMemo(
+    () => ({
+      2: "object-[50%_32%]", 
+      3: "object-[50%_10%]", 
+      4: "object-[50%_22%]", 
+      5: "object-[50%_12%]", 
+      6: "object-[50%_44%]", 
+    }),
     []
   );
 
@@ -69,10 +79,15 @@ export default function LifeSummary() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl font-serif italic text-[#4A2E52]">
+          <h2 className={`text-4xl sm:text-5xl font-serif italic ${HERO_TITLE}`}>
             Nuestra vida en Alma Dulce
           </h2>
           <div className="mx-auto mt-4 h-1.5 w-28 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]" />
+          <p
+            className={`mx-auto mt-4 max-w-2xl font-serif text-[16px] sm:text-[17px] leading-relaxed ${HERO_TEXT}`}
+          >
+            Momentos simples que se vuelven recuerdos: compañía, cariño y vida cotidiana compartida.
+          </p>
         </div>
 
         <div className="mt-12 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -92,11 +107,16 @@ export default function LifeSummary() {
               ].join(" ")}
               aria-label={`Abrir imagen ${idx + 1}`}
             >
-              <div className="aspect-[4/3] w-full overflow-hidden">
+              {/* ✅ un poco más alto para que “quepan mejor” */}
+              <div className="aspect-[4/3.35] w-full overflow-hidden">
                 <img
                   src={src}
                   alt={`Alma Dulce ${idx + 1}`}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                  className={[
+                    "h-full w-full object-cover",
+                    POS[idx] || "object-center",
+                    "transition-transform duration-500 group-hover:scale-[1.06]",
+                  ].join(" ")}
                   loading="lazy"
                   draggable={false}
                 />
@@ -105,8 +125,8 @@ export default function LifeSummary() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               <div className="absolute left-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/85 backdrop-blur-md border border-white/60 px-3 py-1 text-sm font-serif text-[#4A2E52]">
-                  Ver foto <span className="text-[#6B5670]">↗</span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md border border-white/60 px-3 py-1 text-sm font-serif text-[#8A3FA8]">
+                  Ver foto <span className="text-[#6F2F86]">↗</span>
                 </span>
               </div>
             </button>
@@ -162,7 +182,7 @@ export default function LifeSummary() {
               </button>
 
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
-                <span className="rounded-full bg-white/85 backdrop-blur-md border border-white/60 px-3 py-1 text-sm font-serif text-[#4A2E52]">
+                <span className="rounded-full bg-white/90 backdrop-blur-md border border-white/60 px-3 py-1 text-sm font-serif text-[#8A3FA8]">
                   {active + 1} / {IMAGES.length}
                 </span>
               </div>

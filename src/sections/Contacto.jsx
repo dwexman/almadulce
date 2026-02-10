@@ -1,14 +1,63 @@
 import { FaWhatsapp } from "react-icons/fa";
 import fondo2 from "../assets/fondo8.png";
+import { useEffect, useRef } from "react";
 
 export default function Contacto() {
   const agendaHref = "/contacto";
 
-  const phone = "56911112222";
+  const phone = "56952247308";
   const message = encodeURIComponent(
     "Hola 😊 Me gustaría agendar una visita y recibir información sobre Alma Dulce."
   );
   const waHref = `https://wa.me/${phone}?text=${message}`;
+
+  const closingRef = useRef(null);
+
+  useEffect(() => {
+    const el = closingRef.current;
+    if (!el) return;
+
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (reduce) return;
+
+    let raf = 0;
+
+    const onMove = (e) => {
+      const rect = el.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+
+      const dx = (e.clientX - cx) / (rect.width / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
+
+      const clamp = (v) => Math.max(-1, Math.min(1, v));
+      const x = clamp(dx);
+      const y = clamp(dy);
+
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        el.style.setProperty("--px", String(x));
+        el.style.setProperty("--py", String(y));
+      });
+    };
+
+    const onLeave = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        el.style.setProperty("--px", "0");
+        el.style.setProperty("--py", "0");
+      });
+    };
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("mouseleave", onLeave, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
 
   return (
     <section className="relative overflow-hidden py-20 sm:py-24">
@@ -66,6 +115,28 @@ export default function Contacto() {
               <span>Hablemos ahora</span>
             </a>
           </div>
+
+          {/* CIERRE con glass + shine + parallax */}
+          <div className="closing mt-14 sm:mt-16 mx-auto">
+            <div ref={closingRef} className="closing-card">
+              <div className="closing-glow" aria-hidden="true" />
+              <div className="closing-shine" aria-hidden="true" />
+
+              <p className="closing-p">
+                En Alma Dulce no creemos en el cuidado apurado ni impersonal.
+                <br className="hidden sm:block" />
+                Creemos en mirar a los ojos, en escuchar, en acompañar y en rehabilitar
+                con respeto y cariño.
+              </p>
+
+              <div className="closing-divider" aria-hidden="true" />
+
+              <p className="closing-strong">
+                Porque cuando eliges Alma Dulce, eliges tranquilidad para tu familia y amor
+                para quien más quieres.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -77,7 +148,7 @@ export default function Contacto() {
           text-shadow: 0 18px 35px rgba(0,0,0,0.35);
         }
 
-        /* === BOTÓN PILL 3D (más relieve + sombra abajo) === */
+        /* === BOTÓN PILL 3D === */
         .btn-pill{
           position: relative;
           padding: 18px 46px;
@@ -130,7 +201,7 @@ export default function Contacto() {
             0 16px 28px rgba(0,0,0,0.30);
         }
 
-        /* === WhatsApp: más grande y estilo botón sutil === */
+        /* === WhatsApp === */
         .wa-link{
           font-size: 24px;
           font-weight: 700;
@@ -164,6 +235,118 @@ export default function Contacto() {
           color: white;
         }
 
+        /* === CIERRE: glass + shine + parallax === */
+        .closing{
+          max-width: 980px;
+        }
+
+        .closing-card{
+          --px: 0;
+          --py: 0;
+
+          position: relative;
+          padding: 26px 26px;
+          border-radius: 22px;
+          overflow: hidden;
+
+          background: rgba(255,255,255,0.085);
+          border: 1px solid rgba(255,255,255,0.16);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+
+          box-shadow:
+            0 24px 60px rgba(0,0,0,0.40),
+            inset 0 1px 0 rgba(255,255,255,0.22);
+
+          transform: perspective(900px)
+            rotateX(calc(var(--py) * -3deg))
+            rotateY(calc(var(--px) * 4deg))
+            translateY(-1px);
+          transition: transform .12s ease;
+          will-change: transform;
+        }
+
+        .closing-glow{
+          position: absolute;
+          inset: -45px;
+          background:
+            radial-gradient(520px 180px at 18% 22%, rgba(195,90,174,0.22), transparent 60%),
+            radial-gradient(520px 180px at 84% 70%, rgba(99,166,201,0.18), transparent 62%);
+          filter: blur(10px);
+          opacity: 0.95;
+          pointer-events: none;
+
+          transform: translate(
+            calc(var(--px) * 10px),
+            calc(var(--py) * 10px)
+          );
+          transition: transform .12s ease;
+          will-change: transform;
+        }
+
+        .closing-shine{
+          position: absolute;
+          inset: -60px;
+          pointer-events: none;
+          opacity: 0.0;
+
+          background: linear-gradient(
+            115deg,
+            transparent 0%,
+            transparent 35%,
+            rgba(255,255,255,0.30) 45%,
+            rgba(255,255,255,0.12) 50%,
+            transparent 60%,
+            transparent 100%
+          );
+
+          transform: translateX(-40%) rotate(8deg);
+          animation: shineSweep 6.8s ease-in-out infinite;
+          mix-blend-mode: screen;
+        }
+
+        @keyframes shineSweep{
+          0%   { opacity: 0; transform: translateX(-55%) rotate(8deg); }
+          10%  { opacity: 0.55; }
+          35%  { opacity: 0.0; transform: translateX(55%) rotate(8deg); }
+          100% { opacity: 0.0; transform: translateX(55%) rotate(8deg); }
+        }
+
+        .closing-p{
+          position: relative;
+          margin: 0;
+          font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+          font-size: 22px;
+          line-height: 1.6;
+          color: rgba(255,255,255,0.92);
+          text-shadow: 0 16px 34px rgba(0,0,0,0.38);
+        }
+
+        .closing-divider{
+          position: relative;
+          height: 1px;
+          margin: 18px auto 16px;
+          width: min(640px, 92%);
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.30), transparent);
+        }
+
+        .closing-strong{
+          position: relative;
+          margin: 0;
+          font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+          font-size: 24px;
+          line-height: 1.55;
+          font-weight: 900;
+          color: rgba(255,255,255,0.98);
+          text-shadow: 0 18px 42px rgba(0,0,0,0.42);
+        }
+
+        @media (prefers-reduced-motion: reduce){
+          .closing-card{ transition: none; transform: none; }
+          .closing-glow{ transition: none; transform: none; }
+          .closing-shine{ animation: none; opacity: 0; }
+        }
+
         @media (max-width: 640px){
           .btn-pill{
             font-size: 22px;
@@ -176,6 +359,15 @@ export default function Contacto() {
           }
           .wa-dot{ width: 34px; height: 34px; }
           .wa-ico{ width: 20px; height: 20px; }
+
+          .closing-card{
+            padding: 18px 16px;
+            border-radius: 18px;
+            transform: none;
+          }
+          .closing-glow{ transform: none; }
+          .closing-p{ font-size: 18px; }
+          .closing-strong{ font-size: 19px; }
         }
       `}</style>
     </section>

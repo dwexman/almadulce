@@ -32,23 +32,26 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#FFF7FB]/70" />
         </div>
 
-        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-[#C35AAE]/10 blur-3xl" />
+        <div className="absolute -top-44 -left-44 h-[640px] w-[640px] rounded-full bg-[#C35AAE]/20 blur-3xl" />
+        <div className="absolute -top-24 left-0 h-[360px] w-[520px] bg-gradient-to-br from-[#C35AAE]/22 via-[#FFF7FB]/0 to-transparent blur-2xl" />
+
         <div className="absolute -bottom-52 -right-52 h-[620px] w-[620px] rounded-full bg-[#63A6C9]/12 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="min-h-[520px] sm:min-h-[560px] lg:min-h-[620px] flex items-center">
           <div className="max-w-2xl pt-10 pb-14 lg:pr-10">
-            <h1 className="text-[#4A2E52] font-serif italic font-semibold tracking-tight leading-[1.05] text-4xl sm:text-5xl lg:text-6xl">
+            <h1 className="text-[#8A3FA8] font-serif italic font-semibold tracking-tight leading-[1.05] text-4xl sm:text-5xl lg:text-6xl">
               Un hogar donde
               <br />
               el cuidado se siente
             </h1>
 
-            <p className="mt-5 font-serif text-[#6B5670] text-base sm:text-lg lg:text-xl leading-relaxed">
-              Te damos la bienvenida a nuestra residencia para adultos mayores,
-              un lugar cálido donde el bienestar y la rehabilitación son nuestra
-              prioridad.
+            <p className="mt-5 font-serif text-[#6F2F86] text-base sm:text-lg lg:text-xl leading-relaxed">
+              En Alma Dulce cuidamos a las personas mayores con amor, respeto y
+              compañía diaria, entregando atención de calidad y apoyo en su
+              rehabilitación, para que vivan esta etapa con tranquilidad en un
+              entorno seguro y familiar.
             </p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-4">
@@ -75,7 +78,7 @@ export default function Hero() {
                   "h-12 px-6 rounded-2xl",
                   "bg-white/85 backdrop-blur-sm",
                   "border border-white/70",
-                  "text-[#4A2E52] font-semibold",
+                  "text-[#8A3FA8] font-semibold",
                   "shadow-[0_10px_22px_-16px_rgba(40,10,60,0.25)]",
                   "hover:bg-white hover:shadow-[0_14px_26px_-18px_rgba(40,10,60,0.30)] transition",
                 ].join(" ")}

@@ -50,14 +50,14 @@ export default function Footer() {
                 <div className="flex items-center gap-3">
                   <IconPhone />
                   <a className="hover:underline" href="tel:+56912345678">
-                    +56 9 1234 5678
+                    +56952247308
                   </a>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <IconMail />
                   <a className="hover:underline" href="mailto:contacto@almadulce.cl">
-                    contacto@almadulce.cl
+                    residenciaalmadulce@gmail.com
                   </a>
                 </div>
               </div>
