@@ -132,51 +132,25 @@ const SECTIONS = [
 
 export default function TerapiasPage() {
   return (
-    <div className="min-h-screen bg-[#FFF7FB]">
-      {/* Fondo GLOBAL fijo (evita “espacio blanco” abajo y no se agranda) */}
+    <div className="min-h-screen">
+      {/* Fondo GLOBAL fijo: SOLO imagen */}
       <div className="fixed inset-0 -z-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${fondo})`,
-            backgroundRepeat: "repeat",
-            backgroundPosition: "center",
-            backgroundSize: "520px",
-          }}
+        <img
+          src={fondo}
+          alt=""
+          className="h-full w-full object-cover object-center"
+          draggable={false}
+          loading="lazy"
         />
-        <div className="absolute inset-0 bg-[#FFF7FB]/55" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(900px 420px at 50% 12%, rgba(255,255,255,0.72), transparent 60%)," +
-              "radial-gradient(900px 520px at 15% 88%, rgba(195,90,174,0.12), transparent 65%)," +
-              "radial-gradient(900px 520px at 85% 88%, rgba(99,166,201,0.12), transparent 65%)",
-          }}
-        />
-        <div className="absolute -top-56 -left-56 h-[680px] w-[680px] rounded-full bg-[#C35AAE]/16 blur-3xl" />
-        <div className="absolute -bottom-56 -right-56 h-[680px] w-[680px] rounded-full bg-[#63A6C9]/12 blur-3xl" />
       </div>
 
-      {/* Navbar fijo */}
       <div className="fixed top-0 left-0 right-0 z-[9999]">
         <Navbar />
       </div>
 
-      {/* IMPORTANTE: NO le pongas overflow-y-scroll a este main */}
       <main className="pt-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          {/* HERO MINI */}
           <section className="relative overflow-hidden rounded-[34px] border border-white/80 bg-white/85 backdrop-blur-md shadow-[0_18px_40px_-28px_rgba(40,10,60,0.20)]">
-            <div
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(720px 260px at 20% 10%, rgba(255,255,255,0.90), transparent 60%)," +
-                  "radial-gradient(520px 240px at 85% 0%, rgba(195,90,174,0.14), transparent 60%)," +
-                  "radial-gradient(520px 240px at 95% 95%, rgba(99,166,201,0.12), transparent 65%)",
-              }}
-            />
             <div className="relative p-7 sm:p-10">
               <div className="flex flex-col gap-7 sm:gap-8">
                 <div className="flex items-start justify-between gap-5">
@@ -279,7 +253,6 @@ export default function TerapiasPage() {
             </div>
           </section>
 
-          {/* INTRO + STATS */}
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
             <CardShell className="px-6 sm:px-8 py-7">
               <p className={`font-serif text-[16px] sm:text-[17px] leading-relaxed ${BODY}`}>
@@ -303,14 +276,12 @@ export default function TerapiasPage() {
             </div>
           </div>
 
-          {/* CARDS */}
           <div id="cards" className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {SECTIONS.map((s, idx) => (
               <ServiceCard key={s.id} {...s} delayMs={idx * 55} />
             ))}
           </div>
 
-          {/* CIERRE */}
           <div className="mt-12 pb-14">
             <CardShell className="px-6 sm:px-8 py-7">
               <p className={`font-serif text-[16px] sm:text-[18px] leading-relaxed ${BODY}`}>

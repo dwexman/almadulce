@@ -8,6 +8,7 @@ import Contacto from "./sections/Contacto.jsx";
 import Footer from "./components/layout/Footer.jsx";
 
 import TerapiasPage from "./pages/Terapias.jsx";
+import NosotrosPage from "./pages/Nosotros.jsx";
 
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -16,6 +17,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/terapias" element={<TerapiasPage />} />
+      <Route path="/nosotros" element={<NosotrosPage />} />
     </Routes>
   );
 }
@@ -35,7 +37,7 @@ function HomePage() {
 }
 
 function WhatsAppFloating() {
-  const phone = "56911112222";
+  const phone = "56952247308";
   const message = encodeURIComponent(
     "Hola 😊 Me gustaría recibir información sobre Alma Dulce."
   );
