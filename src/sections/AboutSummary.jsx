@@ -29,6 +29,7 @@ export default function AboutSummary() {
       title: "Casa abierta\na la familia",
       text: "Visitas con horario liberado porque la familia es parte fundamental del cuidado.",
       icon: family,
+      afterLine: "Horarios visitas continuo de 10:00 am a 20:00 pm, y/o según requerimientos",
     },
     {
       title: "Atención\nen conjunto",
@@ -81,6 +82,7 @@ export default function AboutSummary() {
               isBigIcon={item.icon === family}
               href={item.href}
               cta={item.cta}
+              afterLine={item.afterLine}
             />
           ))}
         </div>
@@ -108,6 +110,7 @@ function EnfoqueCard({
   isBigIcon = false,
   href,
   cta,
+  afterLine
 }) {
   return (
     <div
@@ -161,6 +164,12 @@ function EnfoqueCard({
       </p>
 
       <div className="mx-auto mt-5 h-[3px] w-12 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9] opacity-70 group-hover:opacity-100 transition-opacity" />
+      {afterLine ? (
+        <p className={`mt-4 font-serif text-[13px] sm:text-[14px] leading-relaxed ${HERO_TEXT} opacity-90`}>
+          {afterLine}
+        </p>
+      ) : null}
+
 
       {/* CTA solo si viene href */}
       {href ? (

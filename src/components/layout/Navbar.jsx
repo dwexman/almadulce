@@ -8,7 +8,7 @@ const LINKS = [
   { label: "Nosotros", to: "/nosotros" },
   { label: "Residencias", to: "/residencias" },
   { label: "Terapias", to: "/terapias" },
-  { label: "Próximos pasos", to: "/proximos-pasos" }, // si tu ruta es /primeros-pasos, cámbiala aquí
+  { label: "Cuidados Domicilarios", to: "/cuidados-domiciliarios" },
 ];
 
 const BRAND_GRADIENT = "from-[#8C5095] via-[#6D5399] to-[#4897C3]";

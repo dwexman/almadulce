@@ -11,6 +11,8 @@ import TerapiasPage from "./pages/Terapias.jsx";
 import NosotrosPage from "./pages/Nosotros.jsx";
 
 import { FaWhatsapp } from "react-icons/fa";
+import CuidadosDomiciliarios from "./pages/CuidadosDomiciliarios.jsx";
+import ResidenciasSection from "./pages/Residences.jsx";
 
 export default function App() {
   return (
@@ -18,6 +20,8 @@ export default function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/terapias" element={<TerapiasPage />} />
       <Route path="/nosotros" element={<NosotrosPage />} />
+      <Route path="/cuidados-domiciliarios" element={<CuidadosDomiciliarios />} />
+      <Route path="/residencias" element={<ResidenciasSection />} />
     </Routes>
   );
 }

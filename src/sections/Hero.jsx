@@ -8,23 +8,26 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#FFF7FB]">
       <div className="absolute inset-0 pointer-events-none">
+        {/* MOBILE BG */}
         <div className="absolute inset-0 lg:hidden">
           <img
             src={portada}
             alt=""
-            className="h-full w-full object-cover object-[70%_25%] contrast-[1.08] brightness-[0.98]"
+            className="h-full w-full object-cover object-[70%_25%] opacity-[0.88] contrast-[1.12] brightness-[1.02] saturate-[1.06]"
             draggable={false}
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FFF7FB]/55 via-[#FFF7FB]/30 to-[#FFF7FB]/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FFF7FB]/85 via-[#FFF7FB]/55 to-transparent" />
+          {/* overlays un poco más fuertes */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FFF7FB]/45 via-[#FFF7FB]/24 to-[#FFF7FB]/52" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FFF7FB]/74 via-[#FFF7FB]/38 to-transparent" />
         </div>
 
+        {/* DESKTOP BG */}
         <div className="absolute inset-y-0 right-0 w-[46%] min-w-[420px] hidden lg:block">
           <img
             src={portada}
             alt=""
-            className="h-full w-full object-cover object-[70%_30%]"
+            className="h-full w-full object-cover object-[70%_30%] contrast-[1.06] brightness-[1.01]"
             draggable={false}
             loading="eager"
           />
@@ -32,26 +35,49 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#FFF7FB]/70" />
         </div>
 
+        {/* blobs */}
         <div className="absolute -top-44 -left-44 h-[640px] w-[640px] rounded-full bg-[#C35AAE]/20 blur-3xl" />
         <div className="absolute -top-24 left-0 h-[360px] w-[520px] bg-gradient-to-br from-[#C35AAE]/22 via-[#FFF7FB]/0 to-transparent blur-2xl" />
-
         <div className="absolute -bottom-52 -right-52 h-[620px] w-[620px] rounded-full bg-[#63A6C9]/12 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="min-h-[520px] sm:min-h-[560px] lg:min-h-[620px] flex items-center">
           <div className="max-w-2xl pt-10 pb-14 lg:pr-10">
-            <h1 className="text-[#8A3FA8] font-serif italic font-semibold tracking-tight leading-[1.05] text-4xl sm:text-5xl lg:text-6xl">
+            {/* Título estilo “RESIDENCIA / ALMA DULCE” */}
+            <div className="mb-6">
+              <p className="font-serif tracking-[0.18em] text-[15px] sm:text-[16px] text-[#8A3FA8]/85">
+                RESIDENCIA
+              </p>
+
+              {/* wrapper inline-block para que la línea mida EXACTO el ancho del texto */}
+              <div className="inline-block">
+                <h1
+                  className={[
+                    "mt-1 font-serif font-semibold tracking-tight leading-[0.95]",
+                    "text-4xl sm:text-5xl lg:text-6xl",
+                    "bg-gradient-to-r",
+                    BRAND_GRADIENT,
+                    "bg-clip-text text-transparent",
+                  ].join(" ")}
+                >
+                  ALMA DULCE
+                </h1>
+
+                <div className={["mt-3 h-1 w-full rounded-full bg-gradient-to-r", BRAND_GRADIENT].join(" ")} />
+              </div>
+            </div>
+
+            <h2 className="text-[#8A3FA8] font-serif italic font-semibold tracking-tight leading-[1.05] text-3xl sm:text-4xl lg:text-5xl">
               Un hogar donde
               <br />
               el cuidado se siente
-            </h1>
+            </h2>
 
             <p className="mt-5 font-serif text-[#6F2F86] text-base sm:text-lg lg:text-xl leading-relaxed">
-              En Alma Dulce cuidamos a las personas mayores con amor, respeto y
-              compañía diaria, entregando atención de calidad y apoyo en su
-              rehabilitación, para que vivan esta etapa con tranquilidad en un
-              entorno seguro y familiar.
+              En Alma Dulce cuidamos a las personas mayores con amor, respeto y compañía diaria,
+              entregando atención de calidad y apoyo en su rehabilitación, para que vivan esta etapa
+              con tranquilidad en un entorno seguro y familiar.
             </p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-4">
