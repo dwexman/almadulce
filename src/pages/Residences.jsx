@@ -14,8 +14,8 @@ import res7 from "../assets/residencias/residencia1/res7.jpg";
 import res8 from "../assets/residencias/residencia1/res8.jpg";
 import res9 from "../assets/residencias/residencia1/res9.jpg";
 import res10 from "../assets/residencias/residencia1/res10.jpg";
-import res11 from "../assets/residencias/residencia1/res11.jpg";
-import res12 from "../assets/residencias/residencia1/res12.jpg";
+import res11 from "../assets/residencias/residencia1/res11.JPG";
+import res12 from "../assets/residencias/residencia1/res12.JPG";
 
 // Residencia 2 (6)
 import resi1 from "../assets/residencias/residencia2/resi1.jpg";
