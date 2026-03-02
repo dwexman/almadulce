@@ -47,7 +47,7 @@ export default function Hero() {
             {/* Título estilo “RESIDENCIA / ALMA DULCE” */}
             <div className="mb-6">
               <p className="font-serif tracking-[0.18em] text-[15px] sm:text-[16px] text-[#8A3FA8]/85">
-                RESIDENCIA
+                RESIDENCIAS
               </p>
 
               {/* wrapper inline-block para que la línea mida EXACTO el ancho del texto */}

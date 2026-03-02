@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { FaWhatsapp } from "react-icons/fa";
+import {
+  TbHeartHandshake,
+  TbLeaf,
+  TbStethoscope,
+  TbSalad,
+  TbMoodHeart,
+  TbHomeHeart,
+  TbMessage2
+} from "react-icons/tb";
 
 import Navbar from "../components/layout/Navbar.jsx";
 import Footer from "../components/layout/Footer.jsx";
@@ -21,32 +29,32 @@ export default function Nosotros() {
 
   const ITEMS = [
     {
-      emoji: "🤍",
+      icon: <TbHeartHandshake />,
       title: "Cuidado con amor y respeto",
       text: "Tratamos a cada residente como parte de nuestra familia. Conocemos sus historias, respetamos sus tiempos y cuidamos con cercanía, paciencia y cariño.",
     },
     {
-      emoji: "🌿",
+      icon: <TbLeaf />,
       title: "Enfoque en rehabilitación y autonomía",
       text: "Trabajamos para mantener y recuperar capacidades físicas y cognitivas, fomentando la independencia y la calidad de vida mediante terapias personalizadas.",
     },
     {
-      emoji: "🩺",
+      icon: <TbStethoscope />,
       title: "Equipo profesional y permanente",
       text: "Contamos con enfermería, TENS y profesionales de la salud que supervisan y acompañan de forma continua, brindando seguridad y confianza a las familias.",
     },
     {
-      emoji: "🥗",
+      icon: <TbSalad />,
       title: "Alimentación segura y supervisada",
       text: "Entregamos una alimentación balanceada, adaptada a cada necesidad, preparada con altos estándares de higiene y cuidado.",
     },
     {
-      emoji: "🌸",
+      icon: <TbMoodHeart />,
       title: "Bienestar físico, mental y emocional",
       text: "Promovemos actividades terapéuticas, estimulación cognitiva y espacios de encuentro que fortalecen el ánimo, la autoestima y el vínculo social.",
     },
     {
-      emoji: "🏡",
+      icon: <TbHomeHeart />,
       title: "Un hogar cálido y seguro",
       text: "Nuestras residencias están pensadas para sentirse como en casa: ambientes acogedores, seguros y respetuosos.",
     },
@@ -54,7 +62,7 @@ export default function Nosotros() {
 
   return (
     <div className="min-h-screen">
-      {/* Fondo GLOBAL: igual que AboutSummary (imagen cover) */}
+      {/* Fondo GLOBAL */}
       <div className="fixed inset-0 -z-10">
         <img
           src={fondo}
@@ -75,14 +83,14 @@ export default function Nosotros() {
         />
       </div>
 
-      {/* Navbar fijo */}
       <div className="fixed top-0 left-0 right-0 z-[9999]">
         <Navbar />
       </div>
 
       <main className="pt-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          {/* HERO / INTRO */}
+
+          {/* HERO */}
           <section className="relative overflow-hidden rounded-[34px] border border-white/80 bg-white/85 backdrop-blur-md shadow-[0_18px_40px_-28px_rgba(40,10,60,0.20)]">
             <div
               className="pointer-events-none absolute inset-0"
@@ -115,7 +123,7 @@ export default function Nosotros() {
               <div className="mx-auto mt-7 h-px w-full max-w-3xl bg-gradient-to-r from-transparent via-black/10 to-transparent" />
 
               <p className={`mx-auto mt-7 max-w-3xl font-serif text-[16px] sm:text-[18px] leading-relaxed ${BODY}`}>
-                <span className="font-extrabold text-[#8A3FA8]">💜 Alma Dulce</span>
+                <span className="font-extrabold text-[#8A3FA8]">Alma Dulce</span>
                 <br />
                 Un lugar donde el cuidado se hace con amor, profesionalismo y dignidad.
               </p>
@@ -135,7 +143,7 @@ export default function Nosotros() {
               >
                 <div className="feature-top">
                   <span className="feature-emoji" aria-hidden="true">
-                    {it.emoji}
+                    {it.icon}
                   </span>
                   <h3 className={`feature-title font-serif italic ${TITLE}`}>{it.title}</h3>
                 </div>
@@ -147,18 +155,9 @@ export default function Nosotros() {
             ))}
           </section>
 
-          {/* CIERRE + CTA */}
+          {/* CTA */}
           <section className="mt-14 sm:mt-16 pb-14">
             <div className="relative overflow-hidden rounded-[34px] border border-white/80 bg-white/85 backdrop-blur-md shadow-[0_18px_40px_-28px_rgba(40,10,60,0.20)]">
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(720px 260px at 20% 10%, rgba(255,255,255,0.90), transparent 60%)," +
-                    "radial-gradient(520px 240px at 85% 0%, rgba(195,90,174,0.14), transparent 60%)," +
-                    "radial-gradient(520px 240px at 95% 95%, rgba(99,166,201,0.12), transparent 65%)",
-                }}
-              />
 
               <div className="relative p-7 sm:p-10 text-center">
                 <p className={`mx-auto max-w-3xl font-serif text-[16px] sm:text-[18px] leading-relaxed ${BODY}`}>
@@ -171,7 +170,7 @@ export default function Nosotros() {
                 </p>
 
                 <h2 className={`mt-8 font-serif italic font-semibold text-3xl sm:text-4xl ${TITLE}`}>
-                  👉 Agenda una visita y conversemos
+                  Agenda una visita y conversemos
                 </h2>
 
                 <p className={`mt-3 font-serif text-[16px] sm:text-[18px] leading-relaxed ${BODY}`}>
@@ -200,10 +199,10 @@ export default function Nosotros() {
                     target="_blank"
                     rel="noreferrer"
                     className="wa-link inline-flex items-center gap-4 font-serif"
-                    aria-label="Hablar por WhatsApp"
+                    aria-label="Hablar"
                   >
                     <span className="wa-dot inline-flex items-center justify-center">
-                      <FaWhatsapp className="wa-ico" aria-hidden="true" />
+                      <TbMessage2 className="wa-ico" aria-hidden="true" />
                     </span>
                     <span>Hablemos ahora</span>
                   </a>
@@ -223,9 +222,11 @@ export default function Nosotros() {
                     Volver al inicio
                   </Link>
                 </div>
+
               </div>
             </div>
           </section>
+
         </div>
       </main>
 
@@ -274,6 +275,7 @@ export default function Nosotros() {
           border: 1px solid rgba(138,63,168,0.12);
           box-shadow: inset 0 1px 0 rgba(255,255,255,0.70);
           font-size: 20px;
+          color: #8A3FA8;
         }
 
         .feature-title{
@@ -298,6 +300,7 @@ export default function Nosotros() {
           box-shadow: 0 14px 28px -22px rgba(40,10,60,0.25);
           transition: transform .18s ease, background .18s ease;
         }
+
         .wa-link:hover{
           transform: translateY(-1px);
           background: rgba(255,255,255,0.98);
@@ -310,6 +313,7 @@ export default function Nosotros() {
           background: rgba(37,211,102,0.95);
           box-shadow: 0 10px 22px rgba(0,0,0,0.18);
         }
+
         .wa-ico{
           width: 20px;
           height: 20px;
