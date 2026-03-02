@@ -18,7 +18,7 @@ export default function AboutSummary() {
       text: "Terapias y rehabilitación de lunes a viernes adaptadas a cada residente.",
       icon: therapy,
       href: "/terapias",
-      cta: "+ info",
+      cta: "información",
     },
     {
       title: "Un ambiente\nque cuida",

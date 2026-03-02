@@ -1,346 +1,218 @@
 import { useEffect, useMemo, useState } from "react";
-import t1 from "../assets/testimonio1.png";
-import t2 from "../assets/testimonio2.png";
-import t3 from "../assets/testimonio3.png";
-import { ChevronLeft, ChevronRight, Heart, Sparkles, Quote, Star } from "lucide-react";
+import { X, Quote } from "lucide-react";
+import fondo from "../assets/fondo3.png";
 
-const BRAND_GRADIENT = "from-[#8C5095] via-[#6D5399] to-[#4897C3]";
+const HERO_TITLE = "text-[#8A3FA8]";
+const HERO_TEXT = "text-[#6F2F86]";
+const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
 
 export default function TestimonialsSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  const ITEMS = useMemo(
+  const TESTIMONIALS = useMemo(
     () => [
-      { img: t1, alt: "Testimonio 1 - Residencia Alma Dulce" },
-      { img: t2, alt: "Testimonio 2 - Residencia Alma Dulce" },
-      { img: t3, alt: "Testimonio 3 - Residencia Alma Dulce" },
+      {
+        name: "Marcela",
+        subtitle: "Hija de Sylvia (91 años)",
+        text: `Me encontré con Alma Dulce el 2024, cuando mi madre Sylvia de 89 años, vivía conmigo su única hija. La situación era compleja para su salud, quería vivir sola, olvidaba si había tomado sus remedios, no quería levantarse lo cual provocó algunas caídas por la poca musculatura desarrollada, siendo la más compleja una fractura de Trocanter mayor (parte del femur), siendo la primera opción intervenir quirúrgicamente.
+
+Cada vez que mi madre llegaba a un Centro Médico por una Urgencia me pedía no quedar hospitalizada y perdía la noción del tiempo y en ocasiones del espacio. Durante su tratamiento que duró más de 4 meses, me di cuenta que por más que quisiera cuidarla no lo lograba y cada vez su calidad de vida se estaba empeorando. Subió de peso, no se levantaba y cada vez le costaba más movilizarse perdiendo fácilmente el equilibrio.
+
+Muchas veces me pidió que la llevara a un "Hogar", para que nadie le dijera lo que podía hacer.
+
+Mi madre y yo necesitábamos un lugar en donde ella estuviera acompañada y monitoreada las 24 horas del día, en donde compartiera con personas con vidas similares a la de ella y que tuviera mucho jardín para sus amadas plantas.
+
+Ahora creo que fue Alma Dulce quien se encontró con nosotras, ha sido un camino con altos y bajos, mi madre ya de 91 años está muy bien físicamente (mencionado por su Geriatra). Hoy está en estudio un deterioro cognitivo, pero tiene muy claro que el jardinero no siempre le hace caso, que las cuidadoras no siempre la dejan salir a regar y por eso se enoja mucho, y que la Sra. que cocina tiene buena mano.
+
+Se pone contenta cuando vamos a la peluquería, a almorzar a los chinos o a tomar helado al Emporio Rosa.
+
+Creo que siempre sentiré un grado de arrepentimiento por no cuidarla, pero tengo la convicción de que Sylvia está bien como está hoy por vivir en Alma Dulce La Reina. Sus enfermedades crónicas están controladas y participa de algunas de las terapias que ofrece la Residencia, porque a ella solo le interesan sus plantas.
+
+Muchas gracias Alma Dulce, sus cuidadoras, la chef, Nicole (dueña y enfermera) y el jardinero que no hace caso.`,
+      },
+      {
+        name: "Natalia y Paula Piergentili Domenech",
+        subtitle: "Hijas de Alejandro",
+        text: `Mi papá llegó a la residencia Alma Dulce en noviembre de 2024. Llevaba años conviviendo con Alzheimer en un grado de deterioro medio, pero tras una hospitalización su condición avanzó y comenzó a necesitar cuidados permanentes, día y noche.
+
+En casa hicimos todo lo posible por acompañarlo, pero comprendimos que ya no solo necesitaba estar cuidado: necesitaba estar estimulado, motivado y acompañado de manera constante.
+
+En Alma Dulce encontramos mucho más que un lugar seguro. Es el único hombre de la residencia y, dentro de su condición, ha logrado construir vínculos: tiene amigas, participa con entusiasmo en las terapias, se come todo —lo que para nosotras es una enorme alegría— y sigue siendo el hombre atento y amable que siempre ha sido. Las cuidadoras lo quieren, lo asisten con dedicación y lo regalonean con una ternura que conmueve profundamente.
+
+Para nosotras, sus hijas, no existen palabras suficientes para agradecer la tranquilidad que sentimos al saber que nuestro papá está seguro, cuidado y querido. Alma Dulce es un espacio hecho para brindar amor, alegría y atención, pero también es un lugar que acoge a las familias y donde siempre nos sentimos verdaderamente bienvenidas.`,
+      },
+      {
+        name: "Verónica Pizarro de la Fuente",
+        subtitle: "Familiar de residente",
+        text: `Durante su permanencia en Alma Dulce Las Condes, ella ha estado muy bien, existe mucha preocupación por los residentes, su aseo y alimentación oportunamente como también la administración de sus medicinas, un reporte de cómo se encuentra, atención afable con sus visitas y lo mas destacable son las actividades que realizan de lunes a viernes con los especialistas que trabajan. Considero que VIVEN el día a día de muy buena forma, y no pasan el día. Estoy muy agradecida de la atención y cuidado que tienen con mi amada madrecita, pronta a cumplir sus 90 años.`,
+      },
     ],
     []
   );
 
-  const nextSlide = () => {
-    if (isTransitioning || ITEMS.length <= 1) return;
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
 
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev + 1) % ITEMS.length);
-
-    setTimeout(() => setIsTransitioning(false), 400);
+  const openAt = (idx) => {
+    setActive(idx);
+    setOpen(true);
   };
 
-  const prevSlide = () => {
-    if (isTransitioning || ITEMS.length <= 1) return;
+  const close = () => setOpen(false);
 
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev - 1 + ITEMS.length) % ITEMS.length);
-
-    setTimeout(() => setIsTransitioning(false), 400);
-  };
-
-  const goToSlide = (index) => {
-    if (isTransitioning || index === currentIndex || ITEMS.length <= 1) return;
-
-    setIsTransitioning(true);
-    setCurrentIndex(index);
-
-    setTimeout(() => setIsTransitioning(false), 400);
-  };
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") close();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50/40 py-16 md:py-24">
-      {/* Decorativos brand */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-28 h-28 rounded-full bg-gradient-to-r from-[#8C5095]/20 to-transparent blur-2xl" />
-        <div className="absolute bottom-10 right-10 w-36 h-36 rounded-full bg-gradient-to-l from-[#4897C3]/18 to-transparent blur-2xl" />
-        <div className="absolute top-1/3 left-1/4 w-16 h-16 rounded-full bg-gradient-to-r from-[#6D5399]/14 to-transparent blur-xl" />
-
-        {/* Líneas decorativas */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/35 to-transparent" />
-
-        {/* Radiales brand (suaves) */}
+    <section className="relative overflow-hidden py-16 sm:py-20">
+      <div className="absolute inset-0">
+        <img
+          src={fondo}
+          alt=""
+          className="h-full w-full object-cover object-center"
+          draggable={false}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-white/25" />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(900px 520px at 15% 10%, rgba(140,80,149,.10), transparent 55%), radial-gradient(900px 560px at 88% 18%, rgba(72,151,195,.09), transparent 58%)",
+              "radial-gradient(900px 420px at 50% 20%, rgba(255,255,255,0.55), transparent 60%)," +
+              "radial-gradient(900px 520px at 15% 85%, rgba(140,80,149,0.10), transparent 65%)," +
+              "radial-gradient(900px 520px at 85% 85%, rgba(72,151,195,0.10), transparent 65%)",
           }}
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div
-          className={`text-center mb-16 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 bg-white/85 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/70 shadow-sm mb-6">
-            <Sparkles className="w-4 h-4 text-[#4897C3]" />
-            <span className="text-sm font-semibold text-slate-700 uppercase tracking-wider">
-              Historias Reales
-            </span>
-            <Heart className="w-4 h-4 text-[#8C5095] animate-pulse" />
-          </div>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4">
-            <span className="relative inline-block">
-              Voces que
-              <span
-                className={[
-                  "absolute -bottom-2 left-0 w-full h-3 -z-10 rounded-full",
-                  "bg-gradient-to-r",
-                  "from-[#8C5095]/25 via-[#6D5399]/18 to-[#4897C3]/25",
-                ].join(" ")}
-              />
-            </span>
-            <br />
-            <span className={`text-transparent bg-clip-text bg-gradient-to-r ${BRAND_GRADIENT}`}>
-              inspiran confianza
-            </span>
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="text-center">
+          <h2 className={`text-4xl sm:text-5xl font-serif italic ${HERO_TITLE}`}>
+            Testimonios
           </h2>
-
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <div className="h-px w-20 bg-gradient-to-r from-[#4897C3]/40 to-transparent" />
-            <Quote className="w-8 h-8 text-slate-400" />
-            <div className="h-px w-20 bg-gradient-to-l from-[#8C5095]/40 to-transparent" />
-          </div>
-
-          <p className="mt-8 text-lg text-slate-600 max-w-2xl mx-auto">
-            Conoce las experiencias genuinas de familias que encontraron en nosotros
-            el cuidado y calidez que buscaban.
+          <div
+            className={`mx-auto mt-4 h-1.5 w-28 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`}
+          />
+          <p
+            className={`mx-auto mt-4 max-w-2xl font-serif text-[16px] sm:text-[17px] leading-relaxed ${HERO_TEXT}`}
+          >
+            Historias reales de familias que confiaron en nosotros.
           </p>
         </div>
 
-        {/* Slider Container */}
-        <div className={`relative transition-all duration-700 delay-100 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          {/* Flechas */}
-          <div className="flex items-center justify-center gap-8 mb-10">
-            <button
-              onClick={prevSlide}
-              className="group relative p-4 rounded-2xl bg-gradient-to-br from-white to-slate-50 shadow-xl hover:shadow-2xl border border-slate-200/70 hover:border-[#4897C3]/40 transition-all duration-300 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
-              aria-label="Testimonio anterior"
-              disabled={isTransitioning || ITEMS.length <= 1}
+        <div className="mt-12 grid gap-5 sm:gap-6 grid-cols-1 md:grid-cols-3">
+          {TESTIMONIALS.map((t, idx) => (
+            <article
+              key={idx}
+              className={[
+                "relative overflow-hidden rounded-3xl",
+                "bg-white/40 backdrop-blur-sm",
+                "border border-white/60",
+                "shadow-[0_22px_50px_-40px_rgba(40,10,60,0.55)]",
+                "p-6 sm:p-7",
+                "flex flex-col",
+                "min-h-[420px]",
+              ].join(" ")}
             >
-              <div className="absolute -inset-2 bg-gradient-to-r from-[#4897C3]/12 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <ChevronLeft className="relative w-6 h-6 text-slate-700 group-hover:text-[#4897C3] transition-colors" />
-            </button>
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-white/70 border border-white/60">
+                  <Quote className="w-5 h-5 text-[#8A3FA8]" />
+                </div>
 
-            <button
-              onClick={nextSlide}
-              className="group relative p-4 rounded-2xl bg-gradient-to-br from-white to-slate-50 shadow-xl hover:shadow-2xl border border-slate-200/70 hover:border-[#8C5095]/40 transition-all duration-300 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
-              aria-label="Siguiente testimonio"
-              disabled={isTransitioning || ITEMS.length <= 1}
-            >
-              <div className="absolute -inset-2 bg-gradient-to-l from-[#8C5095]/12 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <ChevronRight className="relative w-6 h-6 text-slate-700 group-hover:text-[#8C5095] transition-colors" />
-            </button>
-          </div>
+                <div className="min-w-0">
+                  <p className="font-serif font-semibold text-[#6F2F86] leading-tight">
+                    {t.name}
+                  </p>
+                  <p className="font-serif text-[13px] text-[#8A3FA8]/90">
+                    {t.subtitle}
+                  </p>
+                </div>
+              </div>
 
-          {/* Slides */}
-          <div className="relative">
-            {ITEMS.map((item, index) => (
-              <div
-                key={index}
-                className={`
-                  transition-all duration-500 ease-out
-                  ${
-                    index === currentIndex
-                      ? "opacity-100 scale-100 translate-x-0 z-20"
-                      : index === (currentIndex - 1 + ITEMS.length) % ITEMS.length
-                      ? "opacity-40 -translate-x-20 scale-90 z-10 blur-sm pointer-events-none absolute inset-0"
-                      : index === (currentIndex + 1) % ITEMS.length
-                      ? "opacity-40 translate-x-20 scale-90 z-10 blur-sm pointer-events-none absolute inset-0"
-                      : "opacity-0 pointer-events-none absolute inset-0"
-                  }
-                `}
-                style={{
-                  position: index === currentIndex ? "relative" : "absolute",
-                }}
+              <p
+                className={[
+                  "mt-4 font-serif text-[15px] leading-relaxed text-[#6F2F86]",
+                  "whitespace-pre-line",
+                  "line-clamp-8",
+                ].join(" ")}
               >
-                <TestimonialCard img={item.img} alt={item.alt} isActive={index === currentIndex} />
-              </div>
-            ))}
+                {t.text}
+              </p>
 
-            {/* Indicadores */}
-            {ITEMS.length > 1 && (
-              <div className="flex justify-center gap-3 mt-12">
-                {ITEMS.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className="group relative"
-                    aria-label={`Ir al testimonio ${index + 1}`}
-                    disabled={isTransitioning}
-                  >
-                    <div
-                      className={`
-                        w-12 h-1.5 rounded-full transition-all duration-300
-                        ${
-                          index === currentIndex
-                            ? `bg-gradient-to-r ${BRAND_GRADIENT}`
-                            : "bg-slate-300 group-hover:bg-slate-400"
-                        }
-                        ${isTransitioning ? "cursor-not-allowed" : "cursor-pointer"}
-                      `}
-                    />
-                    {index === currentIndex && (
-                      <>
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                          <Star className="w-4 h-4 text-[#4897C3] fill-[#4897C3] animate-bounce" />
-                        </div>
-                        <div
-                          className={[
-                            "absolute -inset-3 rounded-full blur-sm",
-                            "bg-gradient-to-r",
-                            "from-[#4897C3]/16 via-[#6D5399]/12 to-[#8C5095]/16",
-                          ].join(" ")}
-                        />
-                      </>
-                    )}
-                  </button>
-                ))}
+              <div className="mt-auto pt-5">
+                <button
+                  type="button"
+                  onClick={() => openAt(idx)}
+                  className={[
+                    "inline-flex items-center gap-2",
+                    "rounded-full px-4 py-2",
+                    "bg-white/80 hover:bg-white transition",
+                    "border border-white/60",
+                    "font-serif text-sm text-[#8A3FA8]",
+                    "shadow-[0_12px_30px_-22px_rgba(40,10,60,0.55)]",
+                    "focus:outline-none focus:ring-4 focus:ring-[#7B6AB2]/20",
+                  ].join(" ")}
+                >
+                  Leer completo <span className="text-[#6F2F86]">↗</span>
+                </button>
               </div>
-            )}
-          </div>
-
-          {/* Indicador de posición */}
-          <div className="mt-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/85 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/70">
-              <span className="text-sm font-medium text-slate-600">
-                Testimonio{" "}
-                <span className={`text-transparent bg-clip-text bg-gradient-to-r ${BRAND_GRADIENT} font-bold`}>
-                  {currentIndex + 1}
-                </span>{" "}
-                de {ITEMS.length}
-              </span>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
       </div>
-    </section>
-  );
-}
 
-function TestimonialCard({ img, alt, isActive }) {
-  return (
-    <div className={`relative mx-auto max-w-4xl transition-all duration-500 ${isActive ? "scale-100" : "scale-95"}`}>
-      {/* Marco decorativo */}
-      <div
-        className={[
-          "absolute -inset-4 rounded-3xl blur-lg opacity-60",
-          "bg-gradient-to-r",
-          "from-[#4897C3]/18 via-white/30 to-[#8C5095]/18",
-        ].join(" ")}
-      />
-
-      {/* Card */}
-      <div className="relative bg-gradient-to-br from-white via-white to-slate-50 rounded-2xl shadow-2xl border border-slate-200/80 overflow-hidden group">
-        {/* Cabecera */}
-        <div className="relative px-4 py-3 border-b border-slate-200/50 bg-gradient-to-r from-white to-slate-50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="relative">
-                <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${BRAND_GRADIENT} flex items-center justify-center`}>
-                  <Quote className="w-4 h-4 text-white" />
-                </div>
-                <div className="absolute -inset-2 bg-gradient-to-r from-[#4897C3]/18 to-[#8C5095]/18 rounded-full blur-sm" />
-              </div>
-
-              <div>
-                <h3 className="font-bold text-slate-800 text-sm md:text-base">Testimonio Verificado</h3>
-                <div className="flex items-center gap-0.5 mt-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#4897C3] fill-[#4897C3]" />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden md:block">
-              <div className="animate-pulse bg-gradient-to-r from-[#4897C3]/10 to-[#8C5095]/10 px-3 py-1 rounded-full">
-                <span className="text-xs font-medium text-slate-600">Experiencia Real</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Imagen */}
-        <div className="relative p-2 md:p-4">
-          <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-[#4897C3]/6 to-[#8C5095]/6 shadow-inner">
-            <div className="relative overflow-hidden bg-white">
-              <img
-                src={img}
-                alt={alt}
-                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-                style={{
-                  maxHeight: "70vh",
-                  minHeight: "400px",
-                  objectFit: "contain",
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                  margin: "0 auto",
-                }}
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#4897C3]/10 via-transparent to-[#8C5095]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-
-            {/* Puntitos decorativos */}
-            <div className={`absolute top-2 left-2 w-2 h-2 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
-            <div className={`absolute top-2 right-2 w-2 h-2 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
-            <div className={`absolute bottom-2 left-2 w-2 h-2 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
-            <div className={`absolute bottom-2 right-2 w-2 h-2 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
-          </div>
-
-          {/* Pie imagen */}
-          <div className="mt-4 flex items-center justify-center gap-3">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-slate-300" />
-            <div className="flex items-center gap-1.5 px-3 py-1 bg-white/85 backdrop-blur-sm rounded-full border border-slate-200/70">
-              <Heart className="w-3.5 h-3.5 text-[#8C5095] animate-pulse" />
-              <span className="text-xs font-medium text-slate-700">Familias contentas</span>
-            </div>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-slate-300" />
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="bg-gradient-to-r from-slate-50 to-white px-4 py-3 border-t border-slate-200/50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${BRAND_GRADIENT} flex items-center justify-center shadow`}>
-                <span className="text-white font-bold text-xs">AD</span>
-              </div>
-              <span className="text-slate-700 font-medium text-sm">Alma Dulce Residencia</span>
-            </div>
-            <Sparkles className="w-4 h-4 text-[#4897C3]" />
-          </div>
-        </div>
-
-        {/* Brillito borde */}
+      {open && (
         <div
-          className={[
-            "absolute inset-0 rounded-2xl border-2 border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
-            "bg-gradient-to-r from-[#4897C3]/0 via-[#4897C3]/10 to-[#8C5095]/0",
-          ].join(" ")}
-        />
-      </div>
+          className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Testimonio completo"
+          onClick={close}
+        >
+          <div
+            className="relative w-full max-w-3xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative overflow-hidden rounded-3xl bg-white/95 border border-white/60 shadow-[0_30px_70px_-35px_rgba(0,0,0,0.55)]">
+              <button
+                type="button"
+                onClick={close}
+                className="absolute top-3 right-3 inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-white hover:bg-white transition border border-slate-200"
+                aria-label="Cerrar"
+              >
+                <X className="w-6 h-6 text-slate-900" />
+              </button>
 
-      {/* sombra/halo extra */}
-      <div
-        className={[
-          "absolute -inset-4 -z-10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-          "bg-gradient-to-r from-[#4897C3]/14 via-transparent to-[#8C5095]/14",
-        ].join(" ")}
-      />
-    </div>
+              <div className="p-6 sm:p-8">
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5 inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-white border border-slate-200">
+                    <Quote className="w-5 h-5 text-[#8A3FA8]" />
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="font-serif font-semibold text-[#6F2F86] leading-tight">
+                      {TESTIMONIALS[active].name}
+                    </p>
+                    <p className="font-serif text-[13px] text-[#8A3FA8]/90">
+                      {TESTIMONIALS[active].subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5 max-h-[65vh] overflow-auto pr-2">
+                  <p className="font-serif text-[15px] sm:text-[16px] leading-relaxed text-[#6F2F86] whitespace-pre-line">
+                    {TESTIMONIALS[active].text}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
   );
 }

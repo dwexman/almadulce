@@ -123,17 +123,18 @@ export default function Contacto() {
               <div className="closing-shine" aria-hidden="true" />
 
               <p className="closing-p">
-                En Alma Dulce no creemos en el cuidado apurado ni impersonal.
+                En Alma Dulce creemos en un cuidado que nace del alma:
                 <br className="hidden sm:block" />
-                Creemos en mirar a los ojos, en escuchar, en acompañar y en rehabilitar
-                con respeto y cariño.
+                mirar a los ojos, escuchar sin prisa, sostener con ternura y 
+                rehabilitar con respeto profundo por cada historia de vida.
+
               </p>
 
               <div className="closing-divider" aria-hidden="true" />
 
               <p className="closing-strong">
-                Porque cuando eliges Alma Dulce, eliges tranquilidad para tu familia y amor
-                para quien más quieres.
+                Cuando eliges Alma Dulce, eliges paz para tu corazón y 
+                amor verdadero para quien más amas, cada día, en cada gesto, en cada detalle. 💜
               </p>
             </div>
           </div>

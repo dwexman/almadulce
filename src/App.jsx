@@ -13,6 +13,7 @@ import NosotrosPage from "./pages/Nosotros.jsx";
 import { FaWhatsapp } from "react-icons/fa";
 import CuidadosDomiciliarios from "./pages/CuidadosDomiciliarios.jsx";
 import ResidenciasSection from "./pages/Residences.jsx";
+import TestimonialsSection from "./sections/TestimonialsSummary.jsx";
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ function HomePage() {
       <Hero />
       <AboutSumary />
       <LifeSummary />
+      <TestimonialsSection />
       <Contacto />
       <Footer />
       <WhatsAppFloating />

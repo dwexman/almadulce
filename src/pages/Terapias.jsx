@@ -1,4 +1,15 @@
 import { Link } from "react-router-dom";
+import {
+  FaComments,
+  FaWalking,
+  FaHandsHelping,
+  FaMusic,
+  FaDumbbell,
+  FaAppleAlt,
+  FaUtensils,
+  FaUserNurse,
+  FaHandHoldingMedical,
+} from "react-icons/fa";
 
 import Navbar from "../components/layout/Navbar.jsx";
 import Footer from "../components/layout/Footer.jsx";
@@ -12,7 +23,7 @@ const BODY = "text-[#6F2F86]";
 const SECTIONS = [
   {
     id: "fono",
-    emoji: "🌷",
+    icon: FaComments,
     title: "Fonoaudiología en Alma Dulce",
     subtitle: "Comunicación, alimentación segura y bienestar",
     bullets: [
@@ -26,7 +37,7 @@ const SECTIONS = [
   },
   {
     id: "kine",
-    emoji: "🌿",
+    icon: FaWalking,
     title: "Kinesiología en Alma Dulce",
     subtitle: "Movimiento que devuelve confianza y autonomía",
     bullets: [
@@ -40,7 +51,7 @@ const SECTIONS = [
   },
   {
     id: "to",
-    emoji: "🌸",
+    icon: FaHandsHelping,
     title: "Terapia Ocupacional en Alma Dulce",
     subtitle: "Autonomía, sentido y calidad de vida",
     bullets: [
@@ -54,7 +65,7 @@ const SECTIONS = [
   },
   {
     id: "danza",
-    emoji: "💃",
+    icon: FaMusic,
     title: "Danza Terapéutica en Alma Dulce",
     subtitle: "Movimiento, emoción y alegría compartida",
     bullets: [
@@ -68,7 +79,7 @@ const SECTIONS = [
   },
   {
     id: "acond",
-    emoji: "🏃‍♀️",
+    icon: FaDumbbell,
     title: "Acondicionamiento Físico en Alma Dulce",
     subtitle: "Fuerza y equilibrio para una vida más segura",
     bullets: [
@@ -81,7 +92,7 @@ const SECTIONS = [
   },
   {
     id: "nutri",
-    emoji: "🥗",
+    icon: FaAppleAlt,
     title: "Nutrición en Alma Dulce",
     subtitle: "Alimentación que cuida y acompaña",
     bullets: [
@@ -94,7 +105,7 @@ const SECTIONS = [
   },
   {
     id: "alim",
-    emoji: "👩‍🍳",
+    icon: FaUtensils,
     title: "Manipulación de Alimentos en Alma Dulce",
     subtitle: "Seguridad, higiene y dedicación diaria",
     bullets: [
@@ -107,7 +118,7 @@ const SECTIONS = [
   },
   {
     id: "enf",
-    emoji: "🩺",
+    icon: FaUserNurse,
     title: "Enfermería en Alma Dulce",
     subtitle: "Cuidado profesional, permanente y humano",
     bullets: [
@@ -121,7 +132,7 @@ const SECTIONS = [
   },
   {
     id: "tens",
-    emoji: "🤍",
+    icon: FaHandHoldingMedical,
     title: "Técnicos en Enfermería (TENS) en Alma Dulce",
     subtitle: "Presencia constante y cuidado con cariño",
     bullets: ["Aseo y confort", "Movilidad y alimentación", "Observación continua del bienestar"],
@@ -162,7 +173,9 @@ export default function TerapiasPage() {
                       </span>
                     </div>
 
-                    <h1 className={`mt-4 font-serif italic font-semibold tracking-tight leading-[1.06] text-4xl sm:text-5xl ${TITLE}`}>
+                    <h1
+                      className={`mt-4 font-serif italic font-semibold tracking-tight leading-[1.06] text-4xl sm:text-5xl ${TITLE}`}
+                    >
                       Terapias & Modelo de Cuidado
                     </h1>
 
@@ -193,27 +206,28 @@ export default function TerapiasPage() {
                   <div className="h-1.5 w-40 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]" />
 
                   <div className="flex flex-wrap gap-2">
-                    {SECTIONS.slice(0, 6).map((s) => (
-                      <a
-                        key={s.id}
-                        href={`#${s.id}`}
-                        className={[
-                          "inline-flex items-center gap-2",
-                          "rounded-full px-3.5 py-2",
-                          "bg-white",
-                          "border border-black/5",
-                          "shadow-[0_12px_22px_-18px_rgba(40,10,60,0.12)]",
-                          "hover:shadow-[0_16px_28px_-20px_rgba(40,10,60,0.16)] transition",
-                          "text-[13px] font-serif",
-                          BODY,
-                        ].join(" ")}
-                      >
-                        <span className="text-[14px]" aria-hidden="true">
-                          {s.emoji}
-                        </span>
-                        <span className="whitespace-nowrap">{shortLabel(s.title)}</span>
-                      </a>
-                    ))}
+                    {SECTIONS.slice(0, 6).map((s) => {
+                      const Icon = s.icon;
+                      return (
+                        <a
+                          key={s.id}
+                          href={`#${s.id}`}
+                          className={[
+                            "inline-flex items-center gap-2",
+                            "rounded-full px-3.5 py-2",
+                            "bg-white",
+                            "border border-black/5",
+                            "shadow-[0_12px_22px_-18px_rgba(40,10,60,0.12)]",
+                            "hover:shadow-[0_16px_28px_-20px_rgba(40,10,60,0.16)] transition",
+                            "text-[13px] font-serif",
+                            BODY,
+                          ].join(" ")}
+                        >
+                          <Icon className="text-[14px] opacity-90" aria-hidden="true" />
+                          <span className="whitespace-nowrap">{shortLabel(s.title)}</span>
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -404,7 +418,7 @@ function MiniStat({ title, text }) {
   );
 }
 
-function ServiceCard({ id, emoji, title, subtitle, bullets, closing, delayMs = 0 }) {
+function ServiceCard({ id, icon: Icon, title, subtitle, bullets, closing, delayMs = 0 }) {
   return (
     <div
       id={id}
@@ -427,9 +441,7 @@ function ServiceCard({ id, emoji, title, subtitle, bullets, closing, delayMs = 0
               ].join(" ")}
               style={{ animation: "floatSoft 4.8s ease-in-out infinite" }}
             >
-              <span className="text-[20px]" aria-hidden="true">
-                {emoji}
-              </span>
+              <Icon className="text-[18px] text-[#8A3FA8] opacity-95" aria-hidden="true" />
             </div>
           </div>
 
