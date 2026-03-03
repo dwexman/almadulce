@@ -178,8 +178,10 @@ export default function Nosotros() {
                 </p>
 
                 <div className="mt-8 flex flex-col items-center gap-5">
-                  <Link
-                    to={agendaHref}
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noreferrer"
                     className={[
                       "inline-flex items-center justify-center",
                       "h-12 px-6 rounded-2xl",
@@ -192,7 +194,7 @@ export default function Nosotros() {
                     ].join(" ")}
                   >
                     Agenda una visita
-                  </Link>
+                  </a>
 
                   <a
                     href={waHref}
@@ -206,6 +208,21 @@ export default function Nosotros() {
                     </span>
                     <span>Hablemos ahora</span>
                   </a>
+
+                  <Link
+                    to="/equipo"
+                    className={[
+                      "inline-flex items-center justify-center",
+                      "h-11 px-5 rounded-2xl",
+                      "bg-white",
+                      "border border-black/5",
+                      `${TITLE} font-semibold`,
+                      "shadow-[0_12px_22px_-18px_rgba(40,10,60,0.14)]",
+                      "hover:shadow-[0_16px_28px_-20px_rgba(40,10,60,0.18)] transition",
+                    ].join(" ")}
+                  >
+                    Conoce al equipo
+                  </Link>
 
                   <Link
                     to="/"

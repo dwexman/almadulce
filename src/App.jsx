@@ -4,8 +4,8 @@ import Navbar from "./components/layout/Navbar.jsx";
 import AboutSumary from "./sections/AboutSummary.jsx";
 import Hero from "./sections/Hero.jsx";
 import LifeSummary from "./sections/LifeSummary.jsx";
-import Contacto from "./sections/Contacto.jsx";
 import Footer from "./components/layout/Footer.jsx";
+import Equipo from "./pages/Equipo.jsx";
 
 import TerapiasPage from "./pages/Terapias.jsx";
 import NosotrosPage from "./pages/Nosotros.jsx";
@@ -23,6 +23,7 @@ export default function App() {
       <Route path="/nosotros" element={<NosotrosPage />} />
       <Route path="/cuidados-domiciliarios" element={<CuidadosDomiciliarios />} />
       <Route path="/residencias" element={<ResidenciasSection />} />
+      <Route path="/equipo" element={<Equipo />} />
     </Routes>
   );
 }
@@ -35,7 +36,6 @@ function HomePage() {
       <AboutSumary />
       <LifeSummary />
       <TestimonialsSection />
-      <Contacto />
       <Footer />
       <WhatsAppFloating />
     </div>
@@ -45,7 +45,7 @@ function HomePage() {
 function WhatsAppFloating() {
   const phone = "56952247308";
   const message = encodeURIComponent(
-    "Hola 😊 Me gustaría recibir información sobre Alma Dulce."
+    "Hola, Me gustaría recibir información sobre Alma Dulce."
   );
 
   const href = `https://wa.me/${phone}?text=${message}`;

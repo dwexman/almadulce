@@ -6,6 +6,10 @@ const BRAND_GRADIENT = "from-[#8C5095] via-[#6D5399] to-[#4897C3]";
 export default function Footer() {
   const year = new Date().getFullYear();
 
+  const instagramHref = "https://www.instagram.com/residenciasalmadulce/";
+  const facebookHref =
+    "https://www.facebook.com/p/Residencia-Alma-Dulce-61560637838499/";
+
   return (
     <footer className="relative overflow-hidden">
       {/* Línea degradé arriba */}
@@ -26,9 +30,15 @@ export default function Footer() {
               />
 
               <div className="text-slate-900">
-                <p className="font-extrabold leading-tight">Residencia Alma Dulce</p>
-                <p className="text-slate-600 text-sm">Un hogar para el adulto mayor</p>
-                <div className={`mt-2 h-1 w-24 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`} />
+                <p className="font-extrabold leading-tight">
+                  Residencia Alma Dulce
+                </p>
+                <p className="text-slate-600 text-sm">
+                  Un hogar para el adulto mayor
+                </p>
+                <div
+                  className={`mt-2 h-1 w-24 rounded-full bg-gradient-to-r ${BRAND_GRADIENT}`}
+                />
               </div>
             </div>
 
@@ -49,14 +59,17 @@ export default function Footer() {
 
                 <div className="flex items-center gap-3">
                   <IconPhone />
-                  <a className="hover:underline" href="tel:+56912345678">
+                  <a className="hover:underline" href="tel:+56952247308">
                     +56952247308
                   </a>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <IconMail />
-                  <a className="hover:underline" href="mailto:contacto@almadulce.cl">
+                  <a
+                    className="hover:underline"
+                    href="mailto:residenciaalmadulce@gmail.com"
+                  >
                     residenciaalmadulce@gmail.com
                   </a>
                 </div>
@@ -69,9 +82,8 @@ export default function Footer() {
                 </p>
 
                 <div className="mt-2 flex items-center gap-2">
-                  <SocialButton label="Instagram" />
-                  <SocialButton label="Facebook" />
-                  <SocialButton label="WhatsApp" />
+                  <SocialButton label="Instagram" href={instagramHref} />
+                  <SocialButton label="Facebook" href={facebookHref} />
                 </div>
               </div>
             </div>
@@ -97,15 +109,17 @@ export default function Footer() {
   );
 }
 
-function SocialButton({ label }) {
+function SocialButton({ label, href }) {
   return (
-    <button
-      type="button"
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
       className="rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/70 px-3 py-2 text-xs sm:text-sm font-semibold text-slate-700 hover:bg-slate-900/5 transition"
       aria-label={label}
     >
       {label}
-    </button>
+    </a>
   );
 }
 
@@ -143,7 +157,12 @@ function IconMail() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M4 4h16v16H4V4Z" stroke="currentColor" strokeWidth="2" />
-      <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      <path
+        d="M4 7l8 6 8-6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

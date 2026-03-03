@@ -5,6 +5,12 @@ import portada from "../assets/portada.jpeg";
 const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
 
 export default function Hero() {
+  const phone = "56952247308";
+  const message = encodeURIComponent(
+    "Hola, Me gustaría cotizar una residencia en Alma Dulce."
+  );
+  const waHref = `https://wa.me/${phone}?text=${message}`;
+
   return (
     <section className="relative overflow-hidden bg-[#FFF7FB]">
       <div className="absolute inset-0 pointer-events-none">
@@ -64,7 +70,12 @@ export default function Hero() {
                   ALMA DULCE
                 </h1>
 
-                <div className={["mt-3 h-1 w-full rounded-full bg-gradient-to-r", BRAND_GRADIENT].join(" ")} />
+                <div
+                  className={[
+                    "mt-3 h-1 w-full rounded-full bg-gradient-to-r",
+                    BRAND_GRADIENT,
+                  ].join(" ")}
+                />
               </div>
             </div>
 
@@ -81,8 +92,10 @@ export default function Hero() {
             </p>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/cotiza"
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noreferrer"
                 className={[
                   "inline-flex items-center justify-center",
                   "h-12 px-6 rounded-2xl",
@@ -95,7 +108,7 @@ export default function Hero() {
                 ].join(" ")}
               >
                 Cotiza tu residencia
-              </Link>
+              </a>
 
               <Link
                 to="/residencias"

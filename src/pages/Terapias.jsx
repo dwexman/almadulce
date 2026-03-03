@@ -142,6 +142,12 @@ const SECTIONS = [
 ];
 
 export default function TerapiasPage() {
+  const phone = "56952247308";
+  const message = encodeURIComponent(
+    "Hola 😊 Me gustaría cotizar una residencia y recibir información sobre Alma Dulce."
+  );
+  const waHref = `https://wa.me/${phone}?text=${message}`;
+
   return (
     <div className="min-h-screen">
       {/* Fondo GLOBAL fijo: SOLO imagen */}
@@ -232,8 +238,10 @@ export default function TerapiasPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link
-                    to="/cotiza"
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noreferrer"
                     className={[
                       "inline-flex items-center justify-center",
                       "h-12 px-6 rounded-2xl",
@@ -246,7 +254,7 @@ export default function TerapiasPage() {
                     ].join(" ")}
                   >
                     Cotiza tu residencia
-                  </Link>
+                  </a>
 
                   <a
                     href="#cards"
@@ -307,8 +315,10 @@ export default function TerapiasPage() {
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/cotiza"
+                <a
+                  href={waHref}
+                  target="_blank"
+                  rel="noreferrer"
                   className={[
                     "inline-flex items-center justify-center",
                     "h-12 px-6 rounded-2xl",
@@ -321,7 +331,7 @@ export default function TerapiasPage() {
                   ].join(" ")}
                 >
                   Cotiza tu residencia
-                </Link>
+                </a>
 
                 <Link
                   to="/"

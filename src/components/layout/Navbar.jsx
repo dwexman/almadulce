@@ -6,12 +6,16 @@ import { Menu, X } from "lucide-react";
 const LINKS = [
   { label: "Inicio", to: "/" },
   { label: "Nosotros", to: "/nosotros" },
+  { label: "Equipo", to: "/equipo" },
   { label: "Residencias", to: "/residencias" },
   { label: "Terapias", to: "/terapias" },
   { label: "Cuidados Domicilarios", to: "/cuidados-domiciliarios" },
 ];
 
 const BRAND_GRADIENT = "from-[#8C5095] via-[#6D5399] to-[#4897C3]";
+
+const WHATSAPP_COTIZA_HREF =
+  "https://api.whatsapp.com/send/?phone=56952247308&text=Hola+%EF%BF%BD+Me+gustar%C3%ADa+recibir+informaci%C3%B3n+sobre+Alma+Dulce.&type=phone_number&app_absent=0";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -79,10 +83,12 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA (WhatsApp) */}
             <div className="hidden md:flex items-center">
-              <Link
-                to="/cotiza" // cámbialo si tu CTA va a otra ruta o ancla tipo "/#cotiza"
+              <a
+                href={WHATSAPP_COTIZA_HREF}
+                target="_blank"
+                rel="noreferrer"
                 className={[
                   "inline-flex items-center justify-center",
                   "h-11 px-5 rounded-2xl",
@@ -95,7 +101,7 @@ export default function Navbar() {
                 ].join(" ")}
               >
                 Cotiza aquí
-              </Link>
+              </a>
             </div>
 
             {/* Mobile menu button */}
@@ -156,8 +162,11 @@ export default function Navbar() {
                   </NavLink>
                 ))}
 
-                <Link
-                  to="/cotiza"
+                {/* Mobile CTA (WhatsApp) */}
+                <a
+                  href={WHATSAPP_COTIZA_HREF}
+                  target="_blank"
+                  rel="noreferrer"
                   onClick={() => setOpen(false)}
                   className={[
                     "mt-1 inline-flex items-center justify-center",
@@ -170,7 +179,7 @@ export default function Navbar() {
                   ].join(" ")}
                 >
                   Cotiza aquí
-                </Link>
+                </a>
               </div>
             </div>
           </div>

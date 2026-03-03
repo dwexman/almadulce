@@ -41,7 +41,7 @@ Para nosotras, sus hijas, no existen palabras suficientes para agradecer la tran
       },
       {
         name: "Verónica Pizarro de la Fuente",
-        subtitle: "Familiar de residente",
+        subtitle: "Hija de Elena",
         text: `Durante su permanencia en Alma Dulce Las Condes, ella ha estado muy bien, existe mucha preocupación por los residentes, su aseo y alimentación oportunamente como también la administración de sus medicinas, un reporte de cómo se encuentra, atención afable con sus visitas y lo mas destacable son las actividades que realizan de lunes a viernes con los especialistas que trabajan. Considero que VIVEN el día a día de muy buena forma, y no pasan el día. Estoy muy agradecida de la atención y cuidado que tienen con mi amada madrecita, pronta a cumplir sus 90 años.`,
       },
     ],
