@@ -5,12 +5,12 @@ import Footer from "../components/layout/Footer.jsx";
 
 import fondo from "../assets/fondo3.png";
 
-import danza from "../assets/equipo/danza.jpg";
-import kine from "../assets/equipo/kine.jpg";
-import maca from "../assets/equipo/maca.jpg";
-import nico from "../assets/equipo/nico.jpg";
-import teo from "../assets/equipo/teo.jpg";
-import vale from "../assets/equipo/vale.jpg";
+import danza from "../assets/equipo/danza.jpeg";
+import kine from "../assets/equipo/kine.jpeg";
+import maca from "../assets/equipo/maca2.jpeg";
+import nico from "../assets/equipo/nico2.jpeg";
+import teo from "../assets/equipo/teo2.jpeg";
+import vale from "../assets/equipo/vale.jpeg";
 
 const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
 const TITLE = "text-[#8A3FA8]";
