@@ -16,6 +16,19 @@ import Footer from "../components/layout/Footer.jsx";
 
 import fondo from "../assets/fondo3.png";
 
+// imágenes terapias
+import kinesiologia1 from "../assets/terapias/kinesiologia1.jpeg";
+import kinesiologia2 from "../assets/terapias/kinesiologia2.jpeg";
+
+import teroc1 from "../assets/terapias/teroc1.jpeg";
+import teroc2 from "../assets/terapias/teroc2.jpeg";
+import teroc3 from "../assets/terapias/teroc3.jpeg";
+import teroc4 from "../assets/terapias/teroc4.jpeg";
+import teroc5 from "../assets/terapias/teroc5.jpeg";
+import teroc6 from "../assets/terapias/teroc6.jpeg";
+import teroc7 from "../assets/terapias/teroc7.jpeg";
+import teroc8 from "../assets/terapias/teroc8.jpeg";
+
 const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
 const TITLE = "text-[#8A3FA8]";
 const BODY = "text-[#6F2F86]";
@@ -40,6 +53,8 @@ const SECTIONS = [
     icon: FaWalking,
     title: "Kinesiología en Alma Dulce",
     subtitle: "Movimiento que devuelve confianza y autonomía",
+    image: kinesiologia2,
+    imagePos: "center 38%", // ✅ baja un poco para no cortar cabezas
     bullets: [
       "Rehabilitación funcional",
       "Prevención de caídas",
@@ -54,6 +69,8 @@ const SECTIONS = [
     icon: FaHandsHelping,
     title: "Terapia Ocupacional en Alma Dulce",
     subtitle: "Autonomía, sentido y calidad de vida",
+    image: teroc8,
+    imagePos: "center 28%",
     bullets: [
       "Actividades de la vida diaria",
       "Estimulación cognitiva",
@@ -141,6 +158,18 @@ const SECTIONS = [
   },
 ];
 
+// ✅ Galería con posición por imagen
+const GALLERY = [
+  { src: kinesiologia1, alt: "Kinesiología en Alma Dulce", pos: "center 40%" }, 
+  { src: teroc1, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 20%" }, 
+  { src: teroc2, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 30%" },
+  { src: teroc3, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 30%" },
+  { src: teroc4, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 30%" },
+  { src: teroc5, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 30%" },
+  { src: teroc6, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 0%" }, 
+  { src: teroc7, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 60%" },
+];
+
 export default function TerapiasPage() {
   const phone = "56952247308";
   const message = encodeURIComponent(
@@ -186,9 +215,9 @@ export default function TerapiasPage() {
                     </h1>
 
                     <p className={`mt-4 font-serif text-base sm:text-lg leading-relaxed ${BODY}`}>
-                      En Alma Dulce creemos que envejecer no significa perder dignidad, propósito ni cariño.
-                      Trabajamos con un equipo interdisciplinario para mantener y recuperar capacidades físicas,
-                      cognitivas y emocionales, siempre con respeto, cercanía y corazón.
+                      En Alma Dulce creemos que envejecer no significa perder dignidad, propósito ni cariño. Trabajamos
+                      con un equipo interdisciplinario para mantener y recuperar capacidades físicas, cognitivas y
+                      emocionales, siempre con respeto, cercanía y corazón.
                     </p>
                   </div>
 
@@ -279,8 +308,8 @@ export default function TerapiasPage() {
             <CardShell className="px-6 sm:px-8 py-7">
               <p className={`font-serif text-[16px] sm:text-[17px] leading-relaxed ${BODY}`}>
                 Cada persona que llega a nuestras residencias trae una historia, una familia y una forma única de vivir.
-                Por eso trabajamos con un equipo interdisciplinario, enfocado en mantener y recuperar capacidades físicas,
-                cognitivas y emocionales, respetando los tiempos y necesidades de cada residente.
+                Por eso trabajamos con un equipo interdisciplinario, enfocado en mantener y recuperar capacidades
+                físicas, cognitivas y emocionales, respetando los tiempos y necesidades de cada residente.
               </p>
 
               <p className={`mt-5 font-serif text-[16px] sm:text-[17px] leading-relaxed ${BODY}`}>
@@ -292,10 +321,61 @@ export default function TerapiasPage() {
             </CardShell>
 
             <div className="grid gap-6">
-              <MiniStat title="Equipo interdisciplinario" text="Profesionales coordinados para acompañar cuerpo, mente y emoción." />
-              <MiniStat title="Rehabilitación progresiva" text="Enfoque seguro, respetuoso y humano, celebrando cada avance." />
-              <MiniStat title="Cuidado con sentido" text="Rutinas y apoyos pensados para dignidad, autonomía y bienestar real." />
+              <MiniStat
+                title="Equipo interdisciplinario"
+                text="Profesionales coordinados para acompañar cuerpo, mente y emoción."
+              />
+              <MiniStat
+                title="Rehabilitación progresiva"
+                text="Enfoque seguro, respetuoso y humano, celebrando cada avance."
+              />
+              <MiniStat
+                title="Cuidado con sentido"
+                text="Rutinas y apoyos pensados para dignidad, autonomía y bienestar real."
+              />
             </div>
+          </div>
+
+          {/* Galería */}
+          <div className="mt-12">
+            <CardShell className="px-6 sm:px-8 py-7">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <h2 className="font-serif italic font-semibold text-[20px] sm:text-[22px] text-[#8A3FA8]">
+                    Momentos de nuestras terapias
+                  </h2>
+                  <p className="mt-2 font-serif text-[15px] sm:text-[16px] leading-relaxed text-[#6F2F86]">
+                    Rehabilitación, estimulación y acompañamiento en el día a día.
+                  </p>
+                </div>
+
+                <a
+                  href="#cards"
+                  className="hidden sm:inline-flex rounded-2xl bg-white border border-black/5 px-4 py-2 font-serif text-[14px] text-[#8A3FA8] shadow-[0_12px_22px_-18px_rgba(40,10,60,0.12)] hover:shadow-[0_16px_28px_-20px_rgba(40,10,60,0.16)] transition"
+                >
+                  Ver detalle ↓
+                </a>
+              </div>
+
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {GALLERY.map((g, i) => (
+                  <div
+                    key={i}
+                    className="relative overflow-hidden rounded-3xl bg-white border border-[#8A3FA8]/12 shadow-[0_18px_40px_-30px_rgba(17,24,39,0.35)]"
+                  >
+                    <img
+                      src={g.src}
+                      alt={g.alt}
+                      className="h-44 w-full object-cover"
+                      style={{ objectPosition: g.pos || "center 30%" }}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                  </div>
+                ))}
+              </div>
+            </CardShell>
           </div>
 
           <div id="cards" className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -428,7 +508,17 @@ function MiniStat({ title, text }) {
   );
 }
 
-function ServiceCard({ id, icon: Icon, title, subtitle, bullets, closing, delayMs = 0 }) {
+function ServiceCard({
+  id,
+  icon: Icon,
+  title,
+  subtitle,
+  bullets,
+  closing,
+  image,
+  imagePos,
+  delayMs = 0,
+}) {
   return (
     <div
       id={id}
@@ -437,7 +527,8 @@ function ServiceCard({ id, icon: Icon, title, subtitle, bullets, closing, delayM
         animationDelay: `${delayMs}ms`,
       }}
     >
-      <CardShell className="px-6 py-7 flex flex-col min-h-[560px]">
+      {/* ✅ Alto fijo para que todas las tarjetas queden iguales */}
+      <CardShell className="px-6 py-7 flex flex-col h-[620px]">
         <div className="flex items-start gap-3">
           <div className="relative shrink-0">
             <span className="pointer-events-none absolute -inset-3 rounded-3xl bg-gradient-to-r from-[#C35AAE]/18 via-[#7B6AB2]/14 to-[#63A6C9]/16 blur-xl opacity-60" />
@@ -464,6 +555,19 @@ function ServiceCard({ id, icon: Icon, title, subtitle, bullets, closing, delayM
             </p>
           </div>
         </div>
+
+        {image ? (
+          <div className="mt-5 overflow-hidden rounded-3xl border border-[#8A3FA8]/12 bg-white shadow-[0_18px_40px_-30px_rgba(17,24,39,0.35)]">
+            <img
+              src={image}
+              alt={title}
+              className="h-40 w-full object-cover"
+              style={{ objectPosition: imagePos || "center 30%" }}
+              loading="lazy"
+              draggable={false}
+            />
+          </div>
+        ) : null}
 
         <div className="mt-5 h-[3px] w-14 rounded-full bg-gradient-to-r from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9] opacity-75" />
 

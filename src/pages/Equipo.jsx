@@ -27,6 +27,18 @@ function initials(name = "") {
 }
 
 function Avatar({ src, name }) {
+  // 🔧 Ajustes finos por persona (solo para fotos específicas)
+  const tweak = (name || "").toLowerCase();
+  const perPersonTransform = (() => {
+    if (tweak.includes("valentina vergara tapia"))
+      return "scale(1.14) translateY(-26px) translateX(8px)"; // más arriba + a la derecha
+    if (tweak.includes("marielsa fuentes"))
+      return "scale(1.14) translateY(-22px)"; // un poco más arriba
+    if (tweak.includes("sebastián castillo"))
+      return "scale(1.14) translateY(-22px)"; // un poco más arriba (kine)
+    return "scale(1.14) translateY(-18px)"; // default
+  })();
+
   if (src) {
     return (
       <div className="avatar">
@@ -34,6 +46,7 @@ function Avatar({ src, name }) {
           src={src}
           alt={name}
           className="avatar-img"
+          style={{ transform: perPersonTransform }}
           draggable={false}
           loading="lazy"
         />
@@ -99,7 +112,7 @@ export default function Equipo() {
   const TEAM = [
     {
       name: "Nicole Soto Figueroa",
-      role: "Directora General",
+      role: "Directora General - Fundadora Grupo Alma Dulce",
       subrole:
         "Directora Casa Echeñique, Casa La Cisterna, Casa Miguel Claro y Casa Roberto del Río",
       degrees: ["Diplomada en Paciente Crítico – PUC", "Magíster en Enfermería – UNAB"],
@@ -332,7 +345,7 @@ export default function Equipo() {
           transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease, filter .22s ease;
           display: flex;
           flex-direction: column;
-          height: 480px;               /* evita que cambie la fila */
+          height: 480px;
           transform-origin: center;
           will-change: transform;
           overflow: hidden;
@@ -375,7 +388,6 @@ export default function Equipo() {
 
         .team-card > *{ position: relative; z-index: 1; }
 
-        /* IMPORTANTÍSIMO: corta la animación para que el hover "gane" */
         .team-card:hover{
           animation: none !important;
           transform: translateY(-10px) scale(1.14);
@@ -390,7 +402,7 @@ export default function Equipo() {
 
         .team-head{
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 18px;
           margin-bottom: 14px;
         }
@@ -459,7 +471,6 @@ export default function Equipo() {
           overflow: hidden;
         }
 
-        /* Avatar más grande */
         .avatar{
           width: 126px;
           height: 126px;
@@ -491,9 +502,10 @@ export default function Equipo() {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: center top;
           position: relative;
           z-index: 1;
-          transform: scale(1.02);
+          transform: scale(1.14) translateY(-18px);
         }
 
         .avatar-fallback{
