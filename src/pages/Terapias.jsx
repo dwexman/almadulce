@@ -29,6 +29,12 @@ import teroc6 from "../assets/terapias/teroc6.jpeg";
 import teroc7 from "../assets/terapias/teroc7.jpeg";
 import teroc8 from "../assets/terapias/teroc8.jpeg";
 
+// ✅ NUEVO: danza
+import danza1 from "../assets/terapias/danza1.jpeg";
+import danza2 from "../assets/terapias/danza2.jpeg";
+import danza3 from "../assets/terapias/danza3.jpeg";
+import danza4 from "../assets/terapias/danza4.jpeg";
+
 const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
 const TITLE = "text-[#8A3FA8]";
 const BODY = "text-[#6F2F86]";
@@ -54,7 +60,7 @@ const SECTIONS = [
     title: "Kinesiología en Alma Dulce",
     subtitle: "Movimiento que devuelve confianza y autonomía",
     image: kinesiologia2,
-    imagePos: "center 38%", // ✅ baja un poco para no cortar cabezas
+    imagePos: "center 38%",
     bullets: [
       "Rehabilitación funcional",
       "Prevención de caídas",
@@ -85,6 +91,9 @@ const SECTIONS = [
     icon: FaMusic,
     title: "Danza Terapéutica en Alma Dulce",
     subtitle: "Movimiento, emoción y alegría compartida",
+    // ✅ NUEVO: foto para la tarjeta de danza
+    image: danza4,
+    imagePos: "center 35%",
     bullets: [
       "Mejora del equilibrio y coordinación",
       "Estimulación cognitiva",
@@ -158,15 +167,19 @@ const SECTIONS = [
   },
 ];
 
-// ✅ Galería con posición por imagen
+// ✅ Galería con posición por imagen (sumamos danza1-3)
 const GALLERY = [
-  { src: kinesiologia1, alt: "Kinesiología en Alma Dulce", pos: "center 40%" }, 
-  { src: teroc1, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 20%" }, 
+  { src: kinesiologia1, alt: "Kinesiología en Alma Dulce", pos: "center 40%" },
+  { src: danza1, alt: "Danza Terapéutica en Alma Dulce", pos: "center 35%" },
+  { src: danza2, alt: "Danza Terapéutica en Alma Dulce", pos: "center 35%" },
+  { src: danza3, alt: "Danza Terapéutica en Alma Dulce", pos: "center 35%" },
+
+  { src: teroc1, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 20%" },
   { src: teroc2, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 30%" },
   { src: teroc3, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 30%" },
   { src: teroc4, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 30%" },
   { src: teroc5, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 30%" },
-  { src: teroc6, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 0%" }, 
+  { src: teroc6, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 0%" },
   { src: teroc7, alt: "Terapia Ocupacional en Alma Dulce", pos: "center 60%" },
 ];
 
@@ -527,7 +540,6 @@ function ServiceCard({
         animationDelay: `${delayMs}ms`,
       }}
     >
-      {/* ✅ Alto fijo para que todas las tarjetas queden iguales */}
       <CardShell className="px-6 py-7 flex flex-col h-[620px]">
         <div className="flex items-start gap-3">
           <div className="relative shrink-0">
