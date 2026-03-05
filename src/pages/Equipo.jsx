@@ -11,6 +11,7 @@ import maca from "../assets/equipo/maca2.jpeg";
 import nico from "../assets/equipo/nico2.jpeg";
 import teo from "../assets/equipo/teo2.jpeg";
 import vale from "../assets/equipo/vale.jpeg";
+import danae from "../assets/equipo/danae.jpeg";
 
 const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
 const TITLE = "text-[#8A3FA8]";
@@ -160,7 +161,7 @@ export default function Equipo() {
       degrees: [],
       bio:
         "En Alma Dulce la rehabilitación es parte esencial del cuidado. Danae es responsable de la evaluación y tratamiento de trastornos de comunicación y deglución en nuestros residentes, especialmente en casos de demencia, secuelas de ACV y disfagia. Su intervención permite prevenir complicaciones, mejorar la seguridad al alimentarse y mantener la capacidad de comunicación, aportando directamente a la calidad de vida.",
-      photo: null,
+      photo: danae,
     },
     {
       name: "Michelle Palma",
