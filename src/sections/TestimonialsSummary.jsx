@@ -44,6 +44,31 @@ Para nosotras, sus hijas, no existen palabras suficientes para agradecer la tran
         subtitle: "Hija de Elena",
         text: `Durante su permanencia en Alma Dulce Las Condes, ella ha estado muy bien, existe mucha preocupación por los residentes, su aseo y alimentación oportunamente como también la administración de sus medicinas, un reporte de cómo se encuentra, atención afable con sus visitas y lo mas destacable son las actividades que realizan de lunes a viernes con los especialistas que trabajan. Considero que VIVEN el día a día de muy buena forma, y no pasan el día. Estoy muy agradecida de la atención y cuidado que tienen con mi amada madrecita, pronta a cumplir sus 90 años.`,
       },
+      {
+        name: "Mónica Espinoza",
+        subtitle: "Hija de Olivia Q.D.E.P",
+        text: `Conoci la Residencia Alma dulce en el momento justo, Dios sabía cuanto necesitaba para mi mamita algo digno de ella, pues en esos momentos la tenía en un hogar de abuelitos también en La Reina, pero ahí me la maltrataron y alcanze a sacarla a tiempo.
+
+Después de una semana grave salió de alta y llegó a la Resistencia Alma dulce, donde fue recibida con mucho amor, preocupación y dedicación por Nicole, la dueña, profesionales y cuidadoras, desde el primer día mi mamá me decía que se sentía muy querida, de hecho una vez me dijo que no entendía porqué la querían tanto, yo sólo reí, ahí me dijo, ojalá hubiese estado ahí desde el principio, pues a su edad era lindo lo que estaba viviendo y que le había dado una segunda oportunidad de ser feliz.
+
+A pesar de haber estado convaleciente del hospital, en su primera semana y estando aún en silla de ruedas, ella en la clase de baile se paró como pudo y bailó y río mucho, era la terapia que más disfrutaba. Cada vez que la visitaba me hablaba de las cosas que hacía, comía y como la cuidaban, según ella era excesivo, pues mi mamita nunca quizo reconocer que su estado de salud no era bueno y peor despues de la estadía en el hogar donde lo pasó tan mal, cosa que hasta el día de hoy me culpo por no haber elejido bien, haber visto todo lo que ocultaban.
+
+Todos los días hablábamos por video llamada, aunque la hubiese ido a ver, o la traiamos a casa, sobretodo en las fiestas, pero su salud empezó a empeorar debido a las secuelas del maltrato vivido anteriormente.
+
+Nicole, la dueña, para mi familia y para mi y mi mamita fue un ángel del cielo que Dios nos envió a nuestras vidas, siempre al pendiente, preocupada por cada uno de sus abuelitos, comodidad, comidas y regaloneos, al igual que cada cuidadora, a mi mamita le daban un cuidado para mi muy especial, pues cada abuelito es especial para ellas, la sra Jacqueline (cocinera) regaloneaba mucho a mi mamita en sus comidas pues tenía un régimen especial.
+
+Se que la decisión de dejar a una madre o un familiar al cuidado de otras personas y peor aún en un hogar que no es el de ella o el nuestro no es fácil, pero las circunstancias a veces nos ganan y a pesar de haberla cuidado un año y algo, ya no podía hacerlo sola, mi mamita vivía sola en su casita, independiente total, así era feliz, pero un día se cayó y todo cambió, su columna y brazo derecho lo resintieron y quedo en situación de dependencia total al principio de otros, hasta comer le era difícil, pero de a poco aprendió a ser un poquito mas valente, pero a pesar de eso de igual modo necesitaba ayuda importante en sus cuidados, hasta en su vestir.
+
+Un día converse con ella en la noche esta opción de un hogar o residencia... Finalmente terminanos llorando las dos, me costó tanto dejarla ir como yo creo a ella entender que tenía qiue irse de mi lado, pero el día que me dijo que Alma Dulce era su segunda oportunidad de volver a ser feliz y me lo agradeció, mi corazón se sintió regocijado, pues esta vez no me había equivocado, y ella a pesar de todo era y fue feliz.
+
+Digo fue, pues mi mamita el 29 de julio 2025, después de padecer las secuelas del maltrato, se nos fue con Diosito, pero el cariño, el cuidado, la preocupación, las ricas comidas, las risas, l9s bailes, sus lindos trabajos manuales, las amigas hechas, las ricas onces, los momentos únicos vividos ahí quedaron en videos, fotos adentro de Alma Dulce, se fueron con ella en su corazón y a nosotros en nuestras memorias, dejándonos a todos los que la amamos con mucha penita, pero a la vez con un profundo agradecimiento por ser quien era.. Olivia.
+
+Se muy bien que Alma Dulce, es una Residencia de abuelitos, pero yo diría que es más que eso, es un segundo hogar para nuestros padres, abuelos, tíos, por su calidez, porque ahí serán queridos y cuidados de verdad.
+
+Nicole, es una mujer que una vez tuvo un sueño... Tener un lugar digno para los últimos años de los abuelitos y lo logró con creces, espero de corazón que sean muchos más los abuelitos que vivan y gozen con alegrías, cariños, atenciones, preocupaciones, entregadas cada día por los profesionales que los hacen sentirse útiles y vivos nuevamente en conjunto con todas y cada una de las cuidadoras que trabajan para hacerlos sentir en familia y entre amigos como se sintió mi mamita.
+
+Gracias Alma Dulce.`,
+      },
     ],
     []
   );
@@ -124,12 +149,16 @@ Para nosotras, sus hijas, no existen palabras suficientes para agradecer la tran
                 </div>
 
                 <div className="min-w-0">
-                  <p className="font-serif font-semibold text-[#6F2F86] leading-tight">
-                    {t.name}
-                  </p>
-                  <p className="font-serif text-[13px] text-[#8A3FA8]/90">
-                    {t.subtitle}
-                  </p>
+                  {t.name && (
+                    <p className="font-serif font-semibold text-[#6F2F86] leading-tight">
+                      {t.name}
+                    </p>
+                  )}
+                  {t.subtitle && (
+                    <p className="font-serif text-[13px] text-[#8A3FA8]/90">
+                      {t.subtitle}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -194,12 +223,16 @@ Para nosotras, sus hijas, no existen palabras suficientes para agradecer la tran
                   </div>
 
                   <div className="min-w-0">
-                    <p className="font-serif font-semibold text-[#6F2F86] leading-tight">
-                      {TESTIMONIALS[active].name}
-                    </p>
-                    <p className="font-serif text-[13px] text-[#8A3FA8]/90">
-                      {TESTIMONIALS[active].subtitle}
-                    </p>
+                    {TESTIMONIALS[active].name && (
+                      <p className="font-serif font-semibold text-[#6F2F86] leading-tight">
+                        {TESTIMONIALS[active].name}
+                      </p>
+                    )}
+                    {TESTIMONIALS[active].subtitle && (
+                      <p className="font-serif text-[13px] text-[#8A3FA8]/90">
+                        {TESTIMONIALS[active].subtitle}
+                      </p>
+                    )}
                   </div>
                 </div>
 

@@ -28,16 +28,15 @@ function initials(name = "") {
 }
 
 function Avatar({ src, name }) {
-  // 🔧 Ajustes finos por persona (solo para fotos específicas)
   const tweak = (name || "").toLowerCase();
   const perPersonTransform = (() => {
     if (tweak.includes("valentina vergara tapia"))
-      return "scale(1.14) translateY(-26px) translateX(8px)"; // más arriba + a la derecha
+      return "scale(1.14) translateY(-26px) translateX(8px)";
     if (tweak.includes("marielsa fuentes"))
-      return "scale(1.14) translateY(-22px)"; // un poco más arriba
+      return "scale(1.14) translateY(-22px)";
     if (tweak.includes("sebastián castillo"))
-      return "scale(1.14) translateY(-22px)"; // un poco más arriba (kine)
-    return "scale(1.14) translateY(-18px)"; // default
+      return "scale(1.14) translateY(-22px)";
+    return "scale(1.14) translateY(-18px)";
   })();
 
   if (src) {
@@ -62,10 +61,14 @@ function Avatar({ src, name }) {
   );
 }
 
-function Card({ person, idx }) {
+function Card({ person, idx, compact = false, featured = false }) {
   return (
     <article
-      className="team-card"
+      className={[
+        "team-card",
+        compact ? "team-card-compact" : "",
+        featured ? "team-card-featured" : "",
+      ].join(" ")}
       style={{
         animation: `fadeUp 650ms ease-out both`,
         animationDelay: `${idx * 60}ms`,
@@ -110,17 +113,18 @@ export default function Equipo() {
     "Aquí el cuidado es humano, pero también es experto.",
   ];
 
-  const TEAM = [
-    {
-      name: "Nicole Soto Figueroa",
-      role: "Directora General - Fundadora Grupo Alma Dulce",
-      subrole:
-        "Directora Casa Echeñique, Casa La Cisterna, Casa Miguel Claro y Casa Roberto del Río",
-      degrees: ["Diplomada en Paciente Crítico – PUC", "Magíster en Enfermería – UNAB"],
-      bio:
-        "Con más de 10 años de experiencia en paciente crítico, fundé Alma Dulce con un propósito claro: elevar el estándar del cuidado del adulto mayor en Chile, integrando rehabilitación, supervisión clínica permanente y amor genuino por cada residente.",
-      photo: nico,
-    },
+  const DIRECTORA_GENERAL = {
+    name: "Nicole Soto Figueroa",
+    role: "Directora General - Fundadora Grupo Alma Dulce",
+    subrole:
+      "Directora Casa Echeñique, Casa La Cisterna, Casa Miguel Claro y Casa Roberto del Río",
+    degrees: ["Diplomada en Paciente Crítico – PUC", "Magíster en Enfermería – UNAB"],
+    bio:
+      "Con más de 10 años de experiencia en paciente crítico, fundé Alma Dulce con un propósito claro: elevar el estándar del cuidado del adulto mayor en Chile, integrando rehabilitación, supervisión clínica permanente y amor genuino por cada residente.",
+    photo: nico,
+  };
+
+  const DIRECTORAS_TECNICAS = [
     {
       name: "Macarena Rojas Saavedra",
       role: "Directora Técnica – Casa Las Condes",
@@ -134,17 +138,6 @@ export default function Equipo() {
       photo: maca,
     },
     {
-      name: "Daniela Fuentes Cepeda",
-      role: "Directora Técnica – Casa Lo Arcaya",
-      degrees: [
-        "Diplomado en Dirección y Coordinación en Servicios de Enfermería – PUC",
-        "Experiencia en UPC Adulto",
-      ],
-      bio:
-        "Combina liderazgo organizacional y experiencia clínica para asegurar procesos seguros, ordenados y centrados en la calidad de vida.",
-      photo: null,
-    },
-    {
       name: "Valentina Vergara Tapia",
       role: "Directora Técnica – Casa Simón Bolívar",
       degrees: [
@@ -155,6 +148,20 @@ export default function Equipo() {
         "Aporta una mirada actualizada en geriatría, fortaleciendo nuestro enfoque en rehabilitación y funcionalidad.",
       photo: vale,
     },
+    {
+      name: "Daniela Fuentes Cepeda",
+      role: "Directora Técnica – Casa Lo Arcaya",
+      degrees: [
+        "Diplomado en Dirección y Coordinación en Servicios de Enfermería – PUC",
+        "Experiencia en UPC Adulto",
+      ],
+      bio:
+        "Combina liderazgo organizacional y experiencia clínica para asegurar procesos seguros, ordenados y centrados en la calidad de vida.",
+      photo: null,
+    },
+  ];
+
+  const PROFESIONALES = [
     {
       name: "Danae Leyton",
       role: "Fonoaudióloga – Residencia Alma Dulce",
@@ -199,7 +206,6 @@ export default function Equipo() {
 
   return (
     <div className="min-h-screen">
-      {/* Fondo GLOBAL */}
       <div className="fixed inset-0 -z-10">
         <img
           src={fondo}
@@ -226,7 +232,6 @@ export default function Equipo() {
 
       <main className="pt-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          {/* HERO */}
           <section className="relative overflow-hidden rounded-[34px] border border-white/80 bg-white/85 backdrop-blur-md shadow-[0_18px_40px_-28px_rgba(40,10,60,0.20)]">
             <div
               className="pointer-events-none absolute inset-0"
@@ -266,14 +271,36 @@ export default function Equipo() {
             </div>
           </section>
 
-          {/* GRID */}
-          <section className="mt-12 sm:mt-14 grid gap-7 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 overflow-visible items-start">
-            {TEAM.map((p, idx) => (
-              <Card key={p.name} person={p} idx={idx} />
-            ))}
+          <section className="mt-12 sm:mt-14 organigrama">
+            <div className="org-level org-level-top">
+              <Card person={DIRECTORA_GENERAL} idx={0} featured />
+            </div>
+
+            <div className="org-connector org-connector-main" />
+
+            <div className="org-level-label">
+              <span className="org-chip">Dirección técnica</span>
+            </div>
+
+            <div className="org-level org-level-directoras">
+              {DIRECTORAS_TECNICAS.map((p, idx) => (
+                <Card key={p.name} person={p} idx={idx + 1} compact />
+              ))}
+            </div>
+
+            <div className="org-connector org-connector-secondary" />
+
+            <div className="org-level-label">
+              <span className="org-chip">Equipo terapéutico y profesional</span>
+            </div>
+
+            <div className="org-level org-level-profesionales">
+              {PROFESIONALES.map((p, idx) => (
+                <Card key={p.name} person={p} idx={idx + 4} compact />
+              ))}
+            </div>
           </section>
 
-          {/* CTA */}
           <section className="mt-14 sm:mt-16 pb-14">
             <div className="relative overflow-hidden rounded-[34px] border border-white/80 bg-white/85 backdrop-blur-md shadow-[0_18px_40px_-28px_rgba(40,10,60,0.20)]">
               <div className="relative p-7 sm:p-10 text-center">
@@ -336,6 +363,79 @@ export default function Equipo() {
           to { opacity: 1; transform: translateY(0); }
         }
 
+        .organigrama{
+          position: relative;
+        }
+
+        .org-level{
+          position: relative;
+          z-index: 2;
+        }
+
+        .org-level-top{
+          display: flex;
+          justify-content: center;
+        }
+
+        .org-level-top .team-card{
+          width: 100%;
+          max-width: 760px;
+        }
+
+        .org-level-directoras{
+          display: grid;
+          gap: 26px;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          align-items: stretch;
+          margin-top: 18px;
+        }
+
+        .org-level-profesionales{
+          display: grid;
+          gap: 24px;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          align-items: stretch;
+          margin-top: 18px;
+        }
+
+        .org-connector{
+          position: relative;
+          margin: 18px auto;
+          width: 2px;
+          background: linear-gradient(to bottom, rgba(195,90,174,0.6), rgba(123,106,178,0.45), rgba(99,166,201,0.45));
+          border-radius: 999px;
+        }
+
+        .org-connector-main{
+          height: 44px;
+        }
+
+        .org-connector-secondary{
+          height: 34px;
+          margin-top: 24px;
+        }
+
+        .org-level-label{
+          display: flex;
+          justify-content: center;
+        }
+
+        .org-chip{
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 18px;
+          border-radius: 999px;
+          background: rgba(255,255,255,0.86);
+          border: 1px solid rgba(138,63,168,0.14);
+          box-shadow: 0 16px 34px -26px rgba(40,10,60,0.20);
+          font-family: serif;
+          font-size: 14px;
+          font-weight: 700;
+          color: #8A3FA8;
+          letter-spacing: 0.2px;
+        }
+
         .team-card{
           position: relative;
           border-radius: 32px;
@@ -346,12 +446,21 @@ export default function Equipo() {
           transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease, filter .22s ease;
           display: flex;
           flex-direction: column;
-          height: 480px;
+          min-height: 420px;
           transform-origin: center;
           will-change: transform;
           overflow: hidden;
           z-index: 0;
           isolation: isolate;
+        }
+
+        .team-card-featured{
+          min-height: 390px;
+          background: rgba(255,255,255,0.92);
+        }
+
+        .team-card-compact{
+          min-height: 430px;
         }
 
         .team-card:before{
@@ -390,14 +499,13 @@ export default function Equipo() {
         .team-card > *{ position: relative; z-index: 1; }
 
         .team-card:hover{
-          animation: none !important;
-          transform: translateY(-10px) scale(1.14);
+          transform: translateY(-8px);
           background: rgba(255,255,255,0.95);
           border-color: rgba(138,63,168,0.24);
           box-shadow:
             0 44px 120px -52px rgba(40,10,60,0.45),
             0 14px 34px -24px rgba(195,90,174,0.28);
-          z-index: 80;
+          z-index: 20;
           filter: saturate(1.02);
         }
 
@@ -524,11 +632,39 @@ export default function Equipo() {
           z-index: 1;
         }
 
+        @media (max-width: 1024px){
+          .org-level-directoras,
+          .org-level-profesionales{
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
         @media (max-width: 640px){
-          .team-card{ height: auto; }
-          .team-card:hover{ transform: translateY(-6px) scale(1.06); }
-          .avatar{ width: 112px; height: 112px; }
-          .team-bio{ -webkit-line-clamp: 12; }
+          .org-level-top .team-card{
+            max-width: none;
+          }
+
+          .org-level-directoras,
+          .org-level-profesionales{
+            grid-template-columns: 1fr;
+          }
+
+          .team-card{
+            min-height: auto;
+          }
+
+          .team-card:hover{
+            transform: translateY(-6px);
+          }
+
+          .avatar{
+            width: 112px;
+            height: 112px;
+          }
+
+          .team-bio{
+            -webkit-line-clamp: 12;
+          }
         }
       `}</style>
     </div>
