@@ -17,6 +17,7 @@ import Footer from "../components/layout/Footer.jsx";
 import fondo from "../assets/fondo3.png";
 
 // imágenes terapias
+import terapiafono from "../assets/terapias/terapiafono.jpeg";
 import kinesiologia1 from "../assets/terapias/kinesiologia1.jpeg";
 import kinesiologia2 from "../assets/terapias/kinesiologia2.jpeg";
 
@@ -45,6 +46,8 @@ const SECTIONS = [
     icon: FaComments,
     title: "Fonoaudiología en Alma Dulce",
     subtitle: "Comunicación, alimentación segura y bienestar",
+    image: terapiafono,
+    imagePos: "center 35%",
     bullets: [
       "Trastornos de la deglución (disfagia)",
       "Dificultades del habla y lenguaje",
@@ -91,7 +94,6 @@ const SECTIONS = [
     icon: FaMusic,
     title: "Danza Terapéutica en Alma Dulce",
     subtitle: "Movimiento, emoción y alegría compartida",
-    // ✅ NUEVO: foto para la tarjeta de danza
     image: danza4,
     imagePos: "center 35%",
     bullets: [

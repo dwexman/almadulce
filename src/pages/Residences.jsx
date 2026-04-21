@@ -25,6 +25,21 @@ import resi4 from "../assets/residencias/residencia2/resi4.jpg";
 import resi5 from "../assets/residencias/residencia2/resi5.jpg";
 import resi6 from "../assets/residencias/residencia2/resi6.jpg";
 
+// Residencia Las Condes (6)
+import lc1 from "../assets/residencias/residenciaLC/lc1.jpeg";
+import lc2 from "../assets/residencias/residenciaLC/lc2.jpeg";
+import lc3 from "../assets/residencias/residenciaLC/lc3.jpeg";
+import lc4 from "../assets/residencias/residenciaLC/lc4.jpeg";
+import lc5 from "../assets/residencias/residenciaLC/lc5.jpeg";
+import lc6 from "../assets/residencias/residenciaLC/lc6.jpeg";
+
+// Residencia Simón Bolívar (5)
+import sb1 from "../assets/residencias/residenciaSB/sb1.jpeg";
+import sb2 from "../assets/residencias/residenciaSB/sb2.jpeg";
+import sb3 from "../assets/residencias/residenciaSB/sb3.jpeg";
+import sb4 from "../assets/residencias/residenciaSB/sb4.jpeg";
+import sb5 from "../assets/residencias/residenciaSB/sb5.jpeg";
+
 const BRAND_GRADIENT = "from-[#C35AAE] via-[#7B6AB2] to-[#63A6C9]";
 const TITLE = "text-[#8A3FA8]";
 const BODY = "text-[#6F2F86]";
@@ -41,7 +56,10 @@ export default function ResidenciasPage() {
     () => [res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, res11, res12],
     []
   );
+
   const r2Images = useMemo(() => [resi1, resi2, resi3, resi4, resi5, resi6], []);
+  const r3Images = useMemo(() => [lc1, lc2, lc3, lc4, lc5, lc6], []);
+  const r4Images = useMemo(() => [sb1, sb2, sb3, sb4, sb5], []);
 
   const RESIDENCES = useMemo(
     () => [
@@ -57,8 +75,20 @@ export default function ResidenciasPage() {
         address: "Echeñique 7227, La Reina",
         images: r2Images,
       },
+      {
+        id: "residencia-las-condes",
+        name: "Residencia Las Condes",
+        address: "Esteban Dell Orto 7023, Las Condes",
+        images: r3Images,
+      },
+      {
+        id: "residencia-simon-bolivar",
+        name: "Residencia Simón Bolívar",
+        address: "Simón Bolívar 6695, La Reina",
+        images: r4Images,
+      },
     ],
-    [r1Images, r2Images]
+    [r1Images, r2Images, r3Images, r4Images]
   );
 
   const scrollToCard = (id) => {
@@ -67,13 +97,12 @@ export default function ResidenciasPage() {
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const mapQuery = `${RESIDENCES[0].address} ; ${RESIDENCES[1].address}`;
+  const mapQuery = RESIDENCES.map((r) => r.address).join(" ; ");
   const MAP_ZOOM = 11;
   const mapEmbedSrc = `https://www.google.com/maps?output=embed&q=${encodeURIComponent(mapQuery)}&z=${MAP_ZOOM}`;
 
   return (
     <div className="min-h-screen">
-      {/* Fondo GLOBAL fijo: SOLO imagen */}
       <div className="fixed inset-0 -z-10">
         <img
           src={fondo}
@@ -84,7 +113,6 @@ export default function ResidenciasPage() {
         />
       </div>
 
-      {/* Navbar fijo arriba */}
       <div className="fixed top-0 left-0 right-0 z-[9999]">
         <Navbar />
       </div>
@@ -101,26 +129,18 @@ export default function ResidenciasPage() {
             </p>
           </div>
 
-          {/* 2 cards mismo porte */}
           <div className="mt-12 grid gap-10 lg:grid-cols-2 items-stretch">
-            <div id={RESIDENCES[0].id} className="scroll-mt-28 h-full">
-              <ResidenceCard
-                name={RESIDENCES[0].name}
-                address={RESIDENCES[0].address}
-                images={RESIDENCES[0].images}
-              />
-            </div>
-
-            <div id={RESIDENCES[1].id} className="scroll-mt-28 h-full">
-              <ResidenceCard
-                name={RESIDENCES[1].name}
-                address={RESIDENCES[1].address}
-                images={RESIDENCES[1].images}
-              />
-            </div>
+            {RESIDENCES.map((residence) => (
+              <div key={residence.id} id={residence.id} className="scroll-mt-28 h-full">
+                <ResidenceCard
+                  name={residence.name}
+                  address={residence.address}
+                  images={residence.images}
+                />
+              </div>
+            ))}
           </div>
 
-          {/* MAPA + INDICADORES */}
           <div className="mt-12 pb-14">
             <CardShell className="p-0 overflow-hidden">
               <div className="px-6 sm:px-8 pt-7 sm:pt-8">
@@ -250,7 +270,6 @@ function ResidenceCard({ name, address, images }) {
       onMouseLeave={() => setPaused(false)}
     >
       <CardShell className="p-0 overflow-hidden h-full flex flex-col">
-        {/* HEADER con altura fija para alinear el inicio del slider */}
         <div className="px-6 sm:px-8 pt-7 sm:pt-8">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div className="min-w-0 flex-1">
